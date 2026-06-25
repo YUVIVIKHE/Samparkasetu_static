@@ -6,6 +6,7 @@
 @media (max-width: 1080px) {
   .card-grid, .ai-grid, .industry-grid { grid-template-columns: repeat(3, 1fr); }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  :root { --maxw: 960px; }
 }
 
 /* ---- Tablet ---- */
@@ -35,51 +36,102 @@
 /* Touch devices: keep video controls visible (no hover) */
 @media (hover: none) {
   .video-frame.playing .video-controls { opacity: 1; transform: none; }
+  /* larger, comfortable tap targets */
+  .nav-links a, .mobile-menu a, .footer-col a, .faq-q { min-height: 44px; }
 }
 
-/* ---- Mobile ---- */
-@media (max-width: 560px) {
-  .video-controls { padding: 12px 14px; gap: 10px; }
-  .vc-btn { width: 36px; height: 36px; }
+/* ---- Mobile (≤ 640px) ---- */
+@media (max-width: 640px) {
   body { font-size: 15px; }
   .container { padding: 0 18px; }
-  .section { padding: 64px 0; }
-  .section-head { margin-bottom: 40px; }
+  .section { padding: 60px 0; }
+  .section-head { margin-bottom: 36px; }
   .section-lead { font-size: 16px; }
+  .section-title { font-size: clamp(25px, 7vw, 34px); }
 
-  .hero { padding: 116px 0 56px; }
+  /* ----- Navbar ----- */
+  .navbar { padding: 14px 0; }
+  .navbar.scrolled { padding: 10px 0; }
+  .nav-logo span { font-size: 17px; }
+
+  /* ----- Mobile menu ----- */
+  .mobile-menu { width: 100%; max-width: none; padding: 92px 22px 36px; gap: 18px; }
+  .mobile-menu a { font-size: 20px; padding: 14px 6px; }
+
+  /* ----- Hero ----- */
+  .hero { padding: 104px 0 48px; }
+  .hero-title { font-size: clamp(30px, 9vw, 40px); line-height: 1.1; }
+  .hero-sub { font-size: 16.5px; margin-top: 18px; }
+  .eyebrow { font-size: 12.5px; padding: 7px 14px; }
+  .tw-text { min-width: 0; }
+
+  /* Stacked full-width CTAs — thumb friendly */
+  .hero-cta { margin-top: 28px; flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-cta .btn { width: 100%; padding: 15px 24px; font-size: 16px; }
+
+  /* Hero stats as a clean 3-up row */
+  .hero-stats { margin-top: 34px; gap: 0; justify-content: space-between; }
+  .hero-stat { flex: 1; text-align: center; }
+  .hero-stat strong { font-size: 23px; }
+  .hero-stat span { font-size: 12px; }
+
+  /* Dashboard mockup */
+  .dash-card { padding: 18px; }
   .dash-kpis { gap: 8px; }
   .kpi { padding: 10px; }
   .kpi strong { font-size: 19px; }
-  .hero-cta { gap: 10px; }
-  .hero-cta .btn { flex: 1 1 auto; }
-  .hero-stats { gap: 26px; }
-  .hero-stat strong { font-size: 26px; }
+  .kpi-label { font-size: 10.5px; }
 
-  .card-grid, .ai-grid, .industry-grid, .benefit-grid, .testimonial-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .stats-grid .stat-box:last-child { grid-column: auto; }
+  /* ----- Grids → single column ----- */
+  .card-grid, .ai-grid, .industry-grid, .benefit-grid, .testimonial-grid { grid-template-columns: 1fr; gap: 14px; }
+  .card, .ai-card, .benefit-card { padding: 22px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stats-grid .stat-box:last-child { grid-column: 1 / -1; }
+  .stat-box { padding: 22px 12px; }
 
-  .timeline::before { left: 22px; }
-  .timeline li { padding-left: 64px; }
-  .tl-num { width: 46px; height: 46px; font-size: 17px; border-radius: 14px; }
+  /* About chips: let them wrap snugly */
+  .chip-grid { gap: 9px; }
+  .eco-chip { font-size: 13.5px; padding: 9px 15px; }
 
-  .cta-card { padding: 52px 22px; }
+  /* ----- Timeline ----- */
+  .timeline::before { left: 21px; }
+  .timeline li { padding: 0 0 30px 60px; }
+  .tl-num { width: 44px; height: 44px; font-size: 16px; border-radius: 13px; }
+  .tl-body { padding: 16px 18px; }
+
+  /* ----- Video showcase ----- */
+  .video-controls { padding: 10px 12px; gap: 8px; }
+  .vc-btn { width: 36px; height: 36px; }
+  .vp-ring { width: 72px; height: 72px; }
+
+  /* ----- CTA ----- */
+  .cta-section { padding: 40px 0 90px; }
+  .cta-card { padding: 46px 20px; border-radius: var(--radius); }
+  .cta-actions { flex-direction: column; }
   .cta-actions .btn { width: 100%; }
 
-  .footer-cols { grid-template-columns: 1fr 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  /* ----- Footer ----- */
+  .footer { padding: 56px 0 30px; }
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
   .newsletter { flex-direction: column; max-width: none; }
   .newsletter input { border-radius: 14px; }
+  .newsletter .btn { width: 100%; }
 
-  .fab { width: 52px; height: 52px; right: 16px; }
-  .fab-whatsapp { bottom: 16px; }
-  .fab-contact { bottom: 80px; }
-  .back-to-top { left: 16px; bottom: 16px; }
+  /* ----- Floating buttons (avoid overlap, bigger targets) ----- */
+  .fab { width: 54px; height: 54px; right: 14px; }
+  .fab-whatsapp { bottom: 14px; }
+  .fab-contact { bottom: 78px; }
+  .back-to-top { left: 14px; bottom: 14px; width: 46px; height: 46px; }
 }
 
-/* ---- Tiny phones ---- */
-@media (max-width: 360px) {
+/* ---- Small phones (≤ 400px) ---- */
+@media (max-width: 400px) {
   .footer-cols { grid-template-columns: 1fr; }
-  .hero-stats { gap: 18px; }
+  .hero-stats { flex-wrap: wrap; gap: 16px 0; }
+  .hero-stat { flex: 1 0 33%; }
+  .dash-kpis { grid-template-columns: 1fr; }
+  .kpi { display: flex; align-items: baseline; justify-content: space-between; }
+  .kpi strong { margin-top: 0; }
+  .section-title { font-size: clamp(23px, 7.5vw, 30px); }
 }
