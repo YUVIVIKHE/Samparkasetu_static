@@ -1,0 +1,12 @@
+{
+  "name": "Samparkasetu",
+  "short_name": "Samparkasetu",
+  "description": "AI-powered AgriTech platform connecting India's complete agriculture ecosystem.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#16A34A",
+  "icons": [
+    { "src": "assets/images/logo.png", "sizes": "1292x1292", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

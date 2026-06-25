@@ -1,0 +1,106 @@
+/* =========================================================
+   Samparkasetu — Premium Animations (60fps, transform/opacity only)
+   ========================================================= */
+
+/* ---------- Page Loader ---------- */
+.page-loader { position: fixed; inset: 0; z-index: 5000; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 18px; background: var(--bg);
+  transition: opacity .6s var(--ease), visibility .6s; }
+.page-loader.hidden { opacity: 0; visibility: hidden; }
+.loader-mark { animation: floatY 2.6s ease-in-out infinite; }
+.loader-leaf { stroke-dasharray: 120; stroke-dashoffset: 120; animation: draw 1.6s var(--ease) infinite alternate; }
+.loader-text { font-family: var(--font-head); font-weight: 800; letter-spacing: -.02em;
+  font-size: 18px; color: var(--ink); position: relative; overflow: hidden; }
+.loader-text::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(22,163,74,.45), transparent);
+  animation: shimmer 1.4s linear infinite; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes shimmer { to { transform: translateX(100%); } }
+
+/* ---------- Scroll Progress ---------- */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 1100;
+  background: var(--grad); box-shadow: 0 0 10px rgba(22,163,74,.6); transition: width .1s linear; }
+
+/* ---------- Mouse Glow ---------- */
+.mouse-glow { position: fixed; top: 0; left: 0; width: 460px; height: 460px; z-index: 0;
+  pointer-events: none; border-radius: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(22,163,74,.10), transparent 65%);
+  opacity: 0; transition: opacity .4s; will-change: transform; }
+.mouse-glow.active { opacity: 1; }
+
+/* ---------- Animated Cursor ---------- */
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; z-index: 6000; pointer-events: none;
+  border-radius: 50%; transform: translate(-50%, -50%); opacity: 0; }
+.cursor-dot { width: 7px; height: 7px; background: var(--green); transition: opacity .3s; }
+.cursor-ring { width: 34px; height: 34px; border: 1.5px solid rgba(22,163,74,.5);
+  transition: width .25s var(--ease), height .25s var(--ease), opacity .3s, background .25s; }
+.cursor-active .cursor-dot, .cursor-active .cursor-ring { opacity: 1; }
+.cursor-ring.hover { width: 54px; height: 54px; background: rgba(22,163,74,.08); border-color: var(--green); }
+
+/* ---------- Floating shapes ---------- */
+.float-shape { position: absolute; border-radius: 50%; filter: blur(18px); z-index: 0; }
+.shape-a { width: 320px; height: 320px; background: radial-gradient(circle, rgba(22,163,74,.18), transparent 70%);
+  top: -60px; right: -40px; animation: floatA 14s ease-in-out infinite; }
+.shape-b { width: 240px; height: 240px; background: radial-gradient(circle, rgba(245,158,11,.16), transparent 70%);
+  bottom: 20px; left: -60px; animation: floatB 18s ease-in-out infinite; }
+.shape-c { width: 180px; height: 180px; background: radial-gradient(circle, rgba(22,163,74,.12), transparent 70%);
+  top: 40%; left: 45%; animation: floatA 16s ease-in-out infinite reverse; }
+@keyframes floatA { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-24px, 30px) scale(1.08); } }
+@keyframes floatB { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px, -24px) scale(1.1); } }
+
+.float-soft { animation: floatY 6s ease-in-out infinite; }
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* ---------- Pulse ---------- */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(22,163,74,.5); }
+  70% { box-shadow: 0 0 0 10px rgba(22,163,74,0); }
+  100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); }
+}
+
+/* ---------- Marquee ---------- */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Gradient animation on grad-text ---------- */
+.grad-text, .grad-text-light { background-size: 200% 200%; animation: gradShift 6s ease infinite; }
+@keyframes gradShift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* ---------- Scroll Reveal base states ---------- */
+.reveal { opacity: 0; will-change: transform, opacity;
+  transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal[data-anim="fade-up"] { transform: translateY(34px); }
+.reveal[data-anim="fade-left"] { transform: translateX(40px); }
+.reveal[data-anim="fade-right"] { transform: translateX(-40px); }
+.reveal[data-anim="scale-in"] { transform: scale(.94); }
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* Stagger children inside grids */
+.card-grid > *, .ai-grid > *, .industry-grid > *, .benefit-grid > *, .testimonial-grid > *,
+.timeline > *, .stats-grid > *, .chip-grid > * {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.in-view.card-grid > *, .in-view.ai-grid > *, .in-view.industry-grid > *, .in-view.benefit-grid > *,
+.in-view.testimonial-grid > *, .in-view.timeline > *, .in-view.stats-grid > *, .in-view.chip-grid > * {
+  opacity: 1; transform: none;
+}
+
+/* ---------- Text reveal (hero title words) ---------- */
+.word { display: inline-block; }
+
+/* ---------- Typewriter caret ---------- */
+.tw-caret { display: inline-block; width: 2px; background: var(--green); margin-left: 2px;
+  animation: blink 1s step-end infinite; vertical-align: -2px; height: 1em; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- Magnetic / lift helpers ---------- */
+.magnetic { will-change: transform; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .reveal, .card-grid > *, .ai-grid > *, .industry-grid > *, .benefit-grid > *,
+  .testimonial-grid > *, .timeline > *, .stats-grid > *, .chip-grid > * { opacity: 1 !important; transform: none !important; }
+  .mouse-glow, .cursor-dot, .cursor-ring { display: none !important; }
+}
