@@ -434,6 +434,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .footer-col a:hover { color: var(--green); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding-top: 28px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.footer-legal a { color: var(--muted); font-size: 13px; transition: color .2s; }
+.footer-legal a:hover { color: var(--green); }
 .footer-social { display: flex; gap: 10px; }
 .social-link { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line);
   display: grid; place-items: center; font-family: var(--font-head); font-weight: 700; font-size: 14px;
