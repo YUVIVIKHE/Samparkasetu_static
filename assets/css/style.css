@@ -413,20 +413,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   -webkit-text-fill-color: transparent; }
 .stat-box span { display: block; margin-top: 8px; color: rgba(255,255,255,.72); font-size: 14px; }
 
-/* ---------- Impact growth chart ---------- */
-.impact-chart { margin-top: 28px; padding: 26px 30px 18px; border-radius: var(--radius);
-  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+/* ---------- Impact bento (hero chart + side tiles) ---------- */
+.impact-bento { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: stretch; }
+.impact-main { padding: 26px 30px 18px; border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
   border: 1px solid rgba(255,255,255,.12); box-shadow: 0 20px 50px -20px rgba(0,0,0,.5); }
 .impact-chart-head { display: flex; align-items: flex-start; justify-content: space-between;
-  flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  flex-wrap: wrap; gap: 8px; }
 .impact-chart-head h3 { font-family: var(--font-head); font-weight: 700; font-size: 17px;
   color: #fff; margin: 0; letter-spacing: -.01em; }
 .impact-chart-sub { font-size: 12.5px; color: rgba(255,255,255,.55); margin: 4px 0 0; }
-.impact-chart-badge { font-size: 12.5px; font-weight: 600; color: #BBF7D0;
+.impact-chart-badge { display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12.5px; font-weight: 600; color: #BBF7D0;
   background: rgba(22,163,74,.18); border: 1px solid rgba(22,163,74,.35);
   padding: 4px 12px; border-radius: 999px; flex-shrink: 0; }
+.impact-hero-figure { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  margin: 14px 0 10px; }
+.impact-hero-figure strong { font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(40px, 4.6vw, 56px); letter-spacing: -.03em; line-height: 1;
+  background: linear-gradient(135deg,#fff,#BBF7D0); -webkit-background-clip: text;
+  background-clip: text; -webkit-text-fill-color: transparent; }
+.impact-hero-delta { font-family: var(--font-head); font-weight: 700; font-size: 13.5px;
+  color: #4ADE80; }
 .impact-chart-body { position: relative; }
-.impact-chart-body svg { width: 100%; height: 220px; display: block; overflow: visible; }
+.impact-chart-body svg { width: 100%; height: 200px; display: block; overflow: visible; }
 .impact-grid line { stroke: rgba(255,255,255,.08); stroke-width: 1; }
 .impact-grid-labels text { fill: rgba(255,255,255,.38); font-size: 11px;
   font-family: var(--font-body, inherit); }
@@ -439,19 +449,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .impact-pt-end { fill: #16A34A; stroke: #0F172A; stroke-width: 2.5;
   filter: drop-shadow(0 0 8px rgba(22,163,74,.7)); }
 .impact-pt-end:hover, .impact-pt-end:focus { r: 9; }
-.impact-end-label text { fill: #BBF7D0; font-size: 14px; font-weight: 700;
-  font-family: var(--font-head); }
-.impact-start-label text { fill: rgba(255,255,255,.5); font-size: 12px; font-weight: 600;
-  font-family: var(--font-head); }
 .impact-year-labels text { fill: rgba(255,255,255,.6); font-size: 12px; font-family: var(--font-body, inherit); }
+.impact-side { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
+.impact-tile { display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; text-align: center; padding: 24px 18px; border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12); box-shadow: 0 20px 50px -20px rgba(0,0,0,.5);
+  transition: transform .25s var(--ease), border-color .25s var(--ease); }
+.impact-tile:hover { transform: translateY(-4px); border-color: rgba(22,163,74,.45); }
+.impact-tile-icon { font-size: 22px; line-height: 1;
+  background: rgba(22,163,74,.16); border: 1px solid rgba(22,163,74,.3);
+  border-radius: 12px; padding: 9px; margin-bottom: 4px; }
+.impact-tile strong { display: block; font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(28px, 3vw, 38px); letter-spacing: -.02em; line-height: 1;
+  background: linear-gradient(135deg,#fff,#BBF7D0); -webkit-background-clip: text;
+  background-clip: text; -webkit-text-fill-color: transparent; }
+.impact-tile-label { color: rgba(255,255,255,.72); font-size: 13.5px; }
 .impact-tooltip { position: absolute; top: 0; left: 0; transform: translate(-50%, -115%);
   background: #fff; color: var(--ink, #0F172A); font-size: 13px; font-weight: 600;
   padding: 6px 10px; border-radius: 8px; box-shadow: var(--shadow-sm); white-space: nowrap;
   opacity: 0; pointer-events: none; transition: opacity .12s ease; z-index: 2; }
 .impact-tooltip.show { opacity: 1; }
+@media (max-width: 900px) {
+  .impact-bento { grid-template-columns: 1fr; }
+  .impact-side { grid-template-rows: none; grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 640px) {
-  .impact-chart { padding: 18px 16px 14px; }
-  .impact-chart-body svg { height: 170px; }
+  .impact-main { padding: 20px 18px 14px; }
+  .impact-chart-body svg { height: 160px; }
+  .impact-tile { padding: 20px 14px; }
 }
 
 /* ---------- Testimonials ---------- */
