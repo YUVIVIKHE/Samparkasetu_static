@@ -72,6 +72,57 @@
   }, { threshold: 0.6 });
   counters.forEach((c) => countObs.observe(c));
 
+  /* ---------- Impact growth chart: draw-in + hover tooltip ---------- */
+  const impactChart = $('#impactChart');
+  if (impactChart) {
+    const line = $('.impact-line', impactChart);
+    const area = $('.impact-area', impactChart);
+    const points = $$('.impact-pt', impactChart);
+    const tooltip = $('#impactTooltip');
+
+    if (line && !reduce) {
+      const len = line.getTotalLength();
+      line.style.strokeDasharray = len;
+      line.style.strokeDashoffset = len;
+      area.style.opacity = 0;
+    }
+    const drawObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        if (line && !reduce) {
+          line.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,.9,.3,1)';
+          line.style.strokeDashoffset = '0';
+          area.style.transition = 'opacity 1s ease .3s';
+          area.style.opacity = 1;
+        }
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+    drawObs.observe(impactChart);
+
+    const showTip = (pt) => {
+      if (!tooltip) return;
+      const { year, value } = pt.dataset;
+      tooltip.textContent = `${year}: ${value} businesses`;
+      const cx = parseFloat(pt.getAttribute('cx'));
+      const cy = parseFloat(pt.getAttribute('cy'));
+      const pct = (cx / 720) * 100;
+      const pctY = (cy / 240) * 100;
+      tooltip.style.left = pct + '%';
+      tooltip.style.top = pctY + '%';
+      tooltip.classList.add('show');
+    };
+    const hideTip = () => tooltip && tooltip.classList.remove('show');
+
+    points.forEach((pt) => {
+      pt.setAttribute('tabindex', '0');
+      pt.addEventListener('mouseenter', () => showTip(pt));
+      pt.addEventListener('mouseleave', hideTip);
+      pt.addEventListener('focus', () => showTip(pt));
+      pt.addEventListener('blur', hideTip);
+    });
+  }
+
   /* ---------- Typewriter (eyebrow rotating phrases) ---------- */
   const twTarget = $('.tw-text');
   if (twTarget && !reduce) {
