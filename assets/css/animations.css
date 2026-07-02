@@ -85,6 +85,29 @@
   opacity: 1; transform: none;
 }
 
+/* When grids wrap cards in a .swipe-track (mobile carousels), the direct child
+   is the track — reveal the track instantly and animate the cards inside it. */
+.card-grid > .swipe-track, .ai-grid > .swipe-track,
+.industry-grid > .swipe-track, .benefit-grid > .swipe-track,
+.testimonial-grid > .swipe-track,
+.card-grid > .swipe-dots, .ai-grid > .swipe-dots,
+.industry-grid > .swipe-dots, .benefit-grid > .swipe-dots,
+.testimonial-grid > .swipe-dots {
+  opacity: 1; transform: none;
+}
+.swipe-track > .swipe-card {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
+}
+.in-view .swipe-track > .swipe-card,
+.in-view.card-grid .swipe-track > .swipe-card,
+.in-view.ai-grid .swipe-track > .swipe-card,
+.in-view.industry-grid .swipe-track > .swipe-card,
+.in-view.benefit-grid .swipe-track > .swipe-card,
+.in-view.testimonial-grid .swipe-track > .swipe-card {
+  opacity: 1; transform: none;
+}
+
 /* ---------- Text reveal (hero title words) ---------- */
 .word { display: inline-block; }
 
@@ -96,11 +119,31 @@
 /* ---------- Magnetic / lift helpers ---------- */
 .magnetic { will-change: transform; }
 
+/* ---------- Mobile menu: staggered link entrance ---------- */
+.mobile-menu li, .mobile-menu > .btn {
+  opacity: 0; transform: translateX(24px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+.mobile-menu.open li, .mobile-menu.open > .btn {
+  opacity: 1; transform: none;
+}
+.mobile-menu.open li:nth-child(1) { transition-delay: .08s; }
+.mobile-menu.open li:nth-child(2) { transition-delay: .12s; }
+.mobile-menu.open li:nth-child(3) { transition-delay: .16s; }
+.mobile-menu.open li:nth-child(4) { transition-delay: .20s; }
+.mobile-menu.open li:nth-child(5) { transition-delay: .24s; }
+.mobile-menu.open li:nth-child(6) { transition-delay: .28s; }
+.mobile-menu.open li:nth-child(7) { transition-delay: .32s; }
+.mobile-menu.open li:nth-child(8) { transition-delay: .36s; }
+.mobile-menu.open > .btn:nth-last-child(2) { transition-delay: .40s; }
+.mobile-menu.open > .btn:nth-last-child(1) { transition-delay: .44s; }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important;
     transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .reveal, .card-grid > *, .ai-grid > *, .industry-grid > *, .benefit-grid > *,
-  .testimonial-grid > *, .timeline > *, .stats-grid > *, .chip-grid > * { opacity: 1 !important; transform: none !important; }
+  .testimonial-grid > *, .timeline > *, .stats-grid > *, .chip-grid > *,
+  .swipe-track > .swipe-card { opacity: 1 !important; transform: none !important; }
   .mouse-glow, .cursor-dot, .cursor-ring { display: none !important; }
 }

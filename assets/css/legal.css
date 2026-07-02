@@ -1,0 +1,195 @@
+/* =========================================================
+   Samparkasetu — Legal Pages (Terms, Privacy, Refund)
+   ========================================================= */
+
+/* ---- Hero ---- */
+.legal-hero {
+  padding: 140px 0 64px;
+  background:
+    radial-gradient(900px 400px at 60% 0%, rgba(22,163,74,.08), transparent 60%),
+    linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.legal-hero .kicker { margin-bottom: 20px; }
+.legal-title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.legal-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---- Body Wrapper ---- */
+.legal-body {
+  padding: 64px 0 100px;
+}
+
+/* ---- Highlight Banner ---- */
+.legal-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--green-soft);
+  border: 1px solid rgba(22,163,74,.2);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+.lh-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+.legal-highlight p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+
+/* ---- Table of Contents ---- */
+.legal-toc {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 24px 28px;
+  margin-bottom: 48px;
+  box-shadow: var(--shadow-sm);
+}
+.toc-label {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.legal-toc a {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 5px 0;
+  border-bottom: none;
+  transition: color .2s;
+}
+.legal-toc a:hover { color: var(--green); }
+
+/* ---- Content ---- */
+.legal-content section {
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--line);
+}
+.legal-content section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.legal-content h2 {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 18px;
+  scroll-margin-top: 90px;
+}
+.legal-content h3 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  margin: 24px 0 10px;
+}
+.legal-content p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.legal-content p:last-child { margin-bottom: 0; }
+.legal-content ul, .legal-content ol {
+  list-style: none;
+  margin: 0 0 16px 0;
+  padding: 0;
+}
+.legal-content ul li, .legal-content ol li {
+  position: relative;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  padding: 6px 0 6px 22px;
+  border-bottom: none;
+}
+.legal-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: .7;
+}
+.legal-content a {
+  color: var(--green);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-content a:hover { color: var(--green-dark); }
+.legal-content strong { color: var(--ink); font-weight: 600; }
+
+/* ---- Contact Card ---- */
+.legal-contact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.legal-contact-card p {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--ink-soft);
+}
+.legal-contact-card p:last-child { margin-bottom: 0; }
+
+/* ---- Refund Table ---- */
+.refund-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+.refund-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.refund-table th {
+  background: var(--green-soft);
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.refund-table td {
+  padding: 12px 16px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+.refund-table tr:last-child td { border-bottom: none; }
+.refund-table tbody tr:hover { background: var(--bg); }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .legal-hero { padding: 120px 0 48px; }
+  .legal-body { padding: 40px 0 72px; }
+  .legal-toc { padding: 18px 20px; }
+  .legal-content h2 { font-size: 19px; }
+  .legal-highlight { flex-direction: column; gap: 10px; }
+}

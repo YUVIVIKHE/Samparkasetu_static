@@ -22,8 +22,4 @@
   </g>
   <text x="640" y="470" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="58" font-weight="800" fill="#FFFFFF" letter-spacing="-1">Samparkasetu</text>
   <text x="640" y="524" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" fill="#BBF7D0">See the platform in action</text>
-  <g transform="translate(640,610)">
-    <circle r="44" fill="#16A34A"/>
-    <path d="M-12 -20 L24 0 L-12 20 Z" fill="#fff"/>
-  </g>
 </svg>

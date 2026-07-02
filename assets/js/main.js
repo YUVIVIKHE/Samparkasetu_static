@@ -11,33 +11,30 @@
     ['🧩', 'Dealer CRM', 'Manage every dealer relationship, pipeline and follow-up in one place.'],
     ['🎯', 'Lead Management', 'Capture, route and qualify leads automatically across channels.'],
     ['👨‍🌾', 'Farmer Network', 'A connected community of farmers, FPOs and service buyers.'],
-    ['🛒', 'Marketplace', 'Buy and sell equipment, inputs and services with verified partners.'],
     ['🗓️', 'Service Booking', 'On-demand booking for repairs, spraying, rentals and more.'],
     ['🏭', 'OEM Dashboard', 'Real-time visibility into dealers, demand and field performance.'],
     ['📊', 'Analytics', 'Actionable insights on sales, regions, products and trends.'],
     ['📱', 'Mobile App', 'Run your agri-business on the go, even in low-connectivity areas.'],
     ['🤖', 'AI Assistant', 'Conversational AI that handles enquiries and recommends actions.'],
     ['💳', 'Finance', 'Embedded credit and financing workflows for equipment & inputs.'],
-    ['🛡️', 'Insurance', 'Crop, asset and livestock insurance built into the journey.'],
     ['♻️', 'Old Equipment Marketplace', 'A trusted resale ecosystem for pre-owned machinery.'],
   ];
 
   const aiFeatures = [
-    ['AI Lead Qualification', 'Scores and prioritises leads by intent, region and product fit.'],
+    ['One-Click Call', 'Connect with any lead in a single tap — no dialling, no delays.'],
+    ['Prequalified Leads', 'AI scores and filters leads by intent, region and product fit before they reach you.'],
+    ['Instant WhatsApp Alerts', 'Get a real-time WhatsApp notification the moment a new lead comes in.'],
+    ['Agent App', 'A dedicated mobile app for your team to manage day-to-day follow-ups on the go.'],
     ['Smart Dealer Matching', 'Connects every enquiry to the right dealer instantly.'],
     ['Predictive Analytics', 'Forecasts demand, churn and sales opportunities.'],
-    ['WhatsApp Automation', 'Automated, human-like conversations at scale.'],
     ['Voice AI', 'Voice-first interactions for low-literacy and field use.'],
     ['Regional Language Support', 'Understands and responds in major Indian languages.'],
-    ['Recommendation Engine', 'Suggests the right products, services and financing.'],
-    ['Workflow Automation', 'Automates follow-ups, tasks and routing end-to-end.'],
   ];
 
   const industries = [
     ['🚜', 'Agriculture Machinery'], ['🌱', 'Agri Inputs'], ['🥛', 'Dairy'],
     ['🐄', 'Livestock'], ['🏭', 'Food Processing'], ['💧', 'Irrigation'],
-    ['☀️', 'Solar'], ['🏦', 'Financial Services'], ['🛡️', 'Insurance'],
-    ['🏛️', 'Government Programs'], ['🤝', 'NGOs'], ['🌾', 'FPOs'],
+    ['☀️', 'Solar'], ['🏦', 'Financial Services'], ['🤝', 'NGOs'], ['🌾', 'FPOs'],
   ];
 
   const benefits = [
@@ -47,23 +44,23 @@
     ['🚛', 'Distributors', 'Streamlined networks and smarter inventory movement.'],
     ['🏦', 'Banks', 'Reach credit-worthy agri-customers with embedded lending.'],
     ['💼', 'NBFCs', 'Scale agri-financing with verified, data-rich borrowers.'],
-    ['🛡️', 'Insurance Companies', 'Distribute crop, asset and livestock cover at the point of need.'],
     ['🌐', 'Agri Businesses', 'A unified platform to grow across the value chain.'],
-    ['🏛️', 'Government Agencies', 'Last-mile reach for schemes, subsidies and outreach.'],
   ];
 
   const steps = [
-    ['Register', 'Create your account and set up your agri-business profile in minutes.'],
-    ['Connect', 'Link with farmers, dealers, OEMs and partners across the ecosystem.'],
-    ['Generate Leads', 'Let AI capture, qualify and route high-intent leads to you.'],
-    ['Manage Customers', 'Run your CRM, services and follow-ups from one dashboard.'],
-    ['Grow Business', 'Scale with analytics, finance, insurance and marketplace access.'],
+    ['Register', 'Create your account and set up your agri-business profile in minutes — no paperwork, no waiting.'],
+    ['Connect', 'Link with farmers, dealers, OEMs and partners across India\'s agriculture ecosystem instantly.'],
+    ['Get Leads', 'AI captures, qualifies and routes high-intent leads straight to your dashboard in real time.'],
+    ['Manage Leads', 'Track every lead through your pipeline, assign follow-ups and close deals from one place.'],
+    ['Grow Business', 'Use analytics, AI insights and the full Samparkasetu network to scale your agri-business.'],
   ];
 
   const testimonials = [
-    ['Our tractor dealership doubled qualified leads within three months. The AI matching is genuinely a game-changer.', 'Rajesh Kumar', 'Tractor Dealer, Maharashtra', 'RK'],
-    ['Samparkasetu connected our FPO directly to buyers and financing. It feels like the digital backbone agriculture needed.', 'Anita Sharma', 'FPO Director, Punjab', 'AS'],
-    ['As an OEM, the dealer visibility and demand forecasting alone justified the platform. The whole ecosystem in one view.', 'Vikram Patel', 'Regional Head, Agri OEM', 'VP'],
+    ['The prequalified leads save us hours every day. We only call farmers who are genuinely ready to buy, and our conversions have shot up.', 'Jeevan Agro Enterprises', 'Powertrac Dealer', 'JA'],
+    ['One-click calling and instant WhatsApp alerts mean we never miss an enquiry. Samparkasetu has changed how our showroom runs.', 'Lokesh RS Tractors', 'Powertrac Dealer', 'LR'],
+    ['The dealer matching is brilliant — every lead that reaches us is the right fit. Our Mahindra sales pipeline has never been this organised.', 'Maruti Motors', 'Mahindra Dealer', 'MM'],
+    ['The agent app keeps my whole team on track with daily follow-ups. Nothing slips through the cracks anymore.', 'Radha Enterprises', 'Farmtrac Dealer', 'RE'],
+    ['From lead capture to closing, the entire journey is now digital. Samparkasetu is the backbone our dealership needed.', 'Shri Ranganatha Motors', 'Mahindra Dealer', 'SR'],
   ];
 
   const faqs = [
@@ -82,26 +79,46 @@
 
   const render = (sel, html) => { const el = $(sel); if (el) el.innerHTML = html; };
 
-  render('#modulesGrid', modules.map(([i, t, d]) =>
-    `<article class="card"><div class="card-ic">${i}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`).join(''));
+  render('#modulesGrid',
+    `<div class="swipe-track" id="modulesTrack">${
+      modules.map(([i, t, d]) =>
+        `<article class="card swipe-card"><div class="card-ic">${i}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`
+      ).join('')
+    }</div><div class="swipe-dots" id="modulesDots"></div>`);
 
-  render('#aiGrid', aiFeatures.map(([t, d]) =>
-    `<article class="ai-card"><div class="ai-ic">${aiIcon}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`).join(''));
+  render('#aiGrid',
+    `<div class="swipe-track" id="aiTrack">${
+      aiFeatures.map(([t, d]) =>
+        `<article class="ai-card swipe-card"><div class="ai-ic">${aiIcon}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`
+      ).join('')
+    }</div><div class="swipe-dots" id="aiDots"></div>`);
 
-  render('#industryGrid', industries.map(([i, t]) =>
-    `<div class="industry-card"><span class="ind-ic">${i}</span><span>${esc(t)}</span></div>`).join(''));
+  render('#industryGrid',
+    `<div class="swipe-track" id="industryTrack">${
+      industries.map(([i, t]) =>
+        `<div class="industry-card swipe-card"><span class="ind-ic">${i}</span><span>${esc(t)}</span></div>`
+      ).join('')
+    }</div><div class="swipe-dots" id="industryDots"></div>`);
 
-  render('#benefitGrid', benefits.map(([i, t, d]) =>
-    `<article class="benefit-card"><div class="b-top"><div class="b-ic">${i}</div><h3>${esc(t)}</h3></div><p>${esc(d)}</p></article>`).join(''));
+  render('#benefitGrid',
+    `<div class="swipe-track" id="benefitTrack">${
+      benefits.map(([i, t, d]) =>
+        `<article class="benefit-card swipe-card"><div class="b-top"><div class="b-ic">${i}</div><h3>${esc(t)}</h3></div><p>${esc(d)}</p></article>`
+      ).join('')
+    }</div><div class="swipe-dots" id="benefitDots"></div>`);
 
   render('#timeline', steps.map(([t, d], n) =>
     `<li><span class="tl-num">${n + 1}</span><div class="tl-body"><h3>${esc(t)}</h3><p>${esc(d)}</p></div></li>`).join(''));
 
-  render('#testimonialGrid', testimonials.map(([q, a, r, av]) =>
-    `<article class="testimonial"><div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <p class="t-quote">“${esc(q)}”</p>
-      <div class="t-author"><div class="t-avatar">${esc(av)}</div><div><b>${esc(a)}</b><small>${esc(r)}</small></div></div>
-    </article>`).join(''));
+  render('#testimonialGrid',
+    `<div class="swipe-track" id="testimonialTrack">${
+      testimonials.map(([q, a, r, av]) =>
+        `<article class="testimonial swipe-card"><div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="t-quote">"${esc(q)}"</p>
+          <div class="t-author"><div class="t-avatar">${esc(av)}</div><div><b>${esc(a)}</b><small>${esc(r)}</small></div></div>
+        </article>`
+      ).join('')
+    }</div><div class="swipe-dots" id="testimonialDots"></div>`);
 
   render('#faqList', faqs.map(([q, a], i) =>
     `<div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faqa${i}">
@@ -271,4 +288,75 @@
 
   /* ============ Year ============ */
   $('#year').textContent = new Date().getFullYear();
+
+  /* ============ Swipe / Scroll Cards (mobile) ============ */
+  const swipeSets = [
+    { track: '#modulesTrack',     dots: '#modulesDots' },
+    { track: '#aiTrack',          dots: '#aiDots' },
+    { track: '#industryTrack',    dots: '#industryDots' },
+    { track: '#benefitTrack',     dots: '#benefitDots' },
+    { track: '#testimonialTrack', dots: '#testimonialDots' },
+  ];
+
+  const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
+
+  swipeSets.forEach(({ track: tSel, dots: dSel }) => {
+    const track = $(tSel);
+    const dotsWrap = $(dSel);
+    if (!track || !dotsWrap) return;
+
+    // step = one card width + gap (the distance scrolled per "page")
+    const stepSize = () => {
+      const cards = $$('.swipe-card', track);
+      if (!cards.length) return 1;
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      return cards[0].offsetWidth + gap;
+    };
+
+    const buildDots = () => {
+      if (!isMobile()) { dotsWrap.innerHTML = ''; return; }
+      const cards = $$('.swipe-card', track);
+      if (!cards.length) return;
+      const step = stepSize();
+      // total pages = how many step-widths fit across the full scroll range
+      const pages = Math.max(1, Math.round(track.scrollWidth / track.offsetWidth));
+      const count = Math.min(cards.length, Math.max(pages, Math.ceil(cards.length / Math.max(1, Math.floor(track.offsetWidth / step)))));
+      dotsWrap.innerHTML = Array.from({ length: count }, (_, i) =>
+        `<button class="swipe-dot${i === 0 ? ' active' : ''}" aria-label="Go to item ${i + 1} of ${count}" data-idx="${i}"></button>`
+      ).join('');
+      $$('.swipe-dot', dotsWrap).forEach((dot) => {
+        dot.addEventListener('click', () => {
+          track.scrollTo({ left: dot.dataset.idx * step, behavior: 'smooth' });
+        });
+      });
+    };
+
+    let ticking = false;
+    const updateDots = () => {
+      if (ticking || !isMobile()) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const dots = $$('.swipe-dot', dotsWrap);
+        if (dots.length) {
+          const step = stepSize();
+          const maxScroll = track.scrollWidth - track.offsetWidth;
+          // map scroll position onto dot index, clamping the last page to the end
+          let idx = Math.round(track.scrollLeft / step);
+          if (track.scrollLeft >= maxScroll - 2) idx = dots.length - 1;
+          idx = Math.max(0, Math.min(idx, dots.length - 1));
+          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+        ticking = false;
+      });
+    };
+
+    buildDots();
+    track.addEventListener('scroll', updateDots, { passive: true });
+
+    let rt;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { buildDots(); updateDots(); }, 150);
+    }, { passive: true });
+  });
 })();
