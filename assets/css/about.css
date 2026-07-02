@@ -40,7 +40,7 @@
 .about-hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
 
 .about-hero-stats {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
 }
 .ahs-card {
   background: var(--card); border: 1px solid var(--line);
@@ -144,7 +144,7 @@
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .about-hero-inner { grid-template-columns: 1fr; }
-  .about-hero-stats { grid-template-columns: repeat(4, 1fr); }
+  .about-hero-stats { grid-template-columns: repeat(3, 1fr); }
   .mv-grid { grid-template-columns: 1fr; }
   .story-grid { grid-template-columns: 1fr; gap: 40px; }
   .values-grid { grid-template-columns: 1fr 1fr; }

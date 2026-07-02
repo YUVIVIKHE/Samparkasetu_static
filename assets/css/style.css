@@ -414,28 +414,34 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stat-box span { display: block; margin-top: 8px; color: rgba(255,255,255,.72); font-size: 14px; }
 
 /* ---------- Impact growth chart ---------- */
-.impact-chart { margin-top: 28px; padding: 24px 28px 16px; border-radius: var(--radius);
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
+.impact-chart { margin-top: 28px; padding: 26px 30px 18px; border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.12); box-shadow: 0 20px 50px -20px rgba(0,0,0,.5); }
 .impact-chart-head { display: flex; align-items: flex-start; justify-content: space-between;
-  flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-.impact-chart-head h3 { font-family: var(--font-head); font-weight: 700; font-size: 16px;
-  color: #fff; margin: 0; }
-.impact-chart-sub { font-size: 12.5px; color: rgba(255,255,255,.55); margin: 3px 0 0; }
+  flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.impact-chart-head h3 { font-family: var(--font-head); font-weight: 700; font-size: 17px;
+  color: #fff; margin: 0; letter-spacing: -.01em; }
+.impact-chart-sub { font-size: 12.5px; color: rgba(255,255,255,.55); margin: 4px 0 0; }
 .impact-chart-badge { font-size: 12.5px; font-weight: 600; color: #BBF7D0;
   background: rgba(22,163,74,.18); border: 1px solid rgba(22,163,74,.35);
-  padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
+  padding: 4px 12px; border-radius: 999px; flex-shrink: 0; }
 .impact-chart-body { position: relative; }
 .impact-chart-body svg { width: 100%; height: 220px; display: block; overflow: visible; }
 .impact-grid line { stroke: rgba(255,255,255,.08); stroke-width: 1; }
-.impact-grid-labels text { fill: rgba(255,255,255,.4); font-size: 11px;
+.impact-grid-labels text { fill: rgba(255,255,255,.38); font-size: 11px;
   font-family: var(--font-body, inherit); }
-.impact-line { stroke: #16A34A; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.impact-line { stroke: #16A34A; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  filter: drop-shadow(0 2px 6px rgba(22,163,74,.45)); }
 .impact-pt { fill: #0F172A; stroke: #16A34A; stroke-width: 2; cursor: pointer;
   transition: r .15s ease; }
 .impact-pt:hover, .impact-pt:focus { r: 8; fill: #16A34A; outline: none; }
-.impact-pt-end { fill: #16A34A; stroke: #0F172A; stroke-width: 2; }
+.impact-pt-start { fill: rgba(22,163,74,.25); }
+.impact-pt-end { fill: #16A34A; stroke: #0F172A; stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(22,163,74,.7)); }
 .impact-pt-end:hover, .impact-pt-end:focus { r: 9; }
-.impact-end-label text { fill: #BBF7D0; font-size: 13px; font-weight: 700;
+.impact-end-label text { fill: #BBF7D0; font-size: 14px; font-weight: 700;
+  font-family: var(--font-head); }
+.impact-start-label text { fill: rgba(255,255,255,.5); font-size: 12px; font-weight: 600;
   font-family: var(--font-head); }
 .impact-year-labels text { fill: rgba(255,255,255,.6); font-size: 12px; font-family: var(--font-body, inherit); }
 .impact-tooltip { position: absolute; top: 0; left: 0; transform: translate(-50%, -115%);
