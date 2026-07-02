@@ -165,6 +165,7 @@
   .about-hero { padding: 110px 0 56px; }
   .about-hero-title { font-size: clamp(26px, 8.5vw, 36px); }
   .about-hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .about-hero-stats .ahs-card:last-child { grid-column: 1 / -1; }
   .about-hero-cta { flex-direction: column; }
   .values-grid { grid-template-columns: 1fr; }
   .serve-grid { grid-template-columns: 1fr 1fr; gap: 12px; }

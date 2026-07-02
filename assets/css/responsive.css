@@ -77,7 +77,7 @@
     gap: 0;
   }
   .mobile-menu ul { gap: 0; }
-  .mobile-menu a {
+  .mobile-menu ul a {
     font-size: 18px;
     padding: 14px 4px;
     border-bottom: 1px solid var(--line);
@@ -324,10 +324,10 @@
   .industry-grid { grid-template-columns: 1fr; }
 
   .footer-cols { grid-template-columns: 1fr; gap: 20px; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .stats-grid .stat-box:last-child { grid-column: auto; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stats-grid .stat-box:last-child { grid-column: 1 / -1; }
 
-  .mobile-menu a { font-size: 17px; }
+  .mobile-menu ul a { font-size: 17px; }
   .cta-card { padding: 36px 14px; }
 }
 
