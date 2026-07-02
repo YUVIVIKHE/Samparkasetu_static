@@ -126,7 +126,7 @@
   /* ---------- Typewriter (eyebrow rotating phrases) ---------- */
   const twTarget = $('.tw-text');
   if (twTarget && !reduce) {
-    const phrases = ["India's AgriTech Operating System", 'AI for the entire agri-ecosystem', 'One platform · Every stakeholder'];
+    const phrases = ['Where Agritech Meets the Future of Sales.', 'Built for the Fields. Powered by AI.', 'Every Lead Qualified. Every Dealer Empowered.'];
     twTarget.textContent = '';                  // clear the static seed text
     const textNode = document.createTextNode('');
     twTarget.appendChild(textNode);
