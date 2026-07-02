@@ -102,8 +102,8 @@
 
     const showTip = (pt) => {
       if (!tooltip) return;
-      const { year, value } = pt.dataset;
-      tooltip.textContent = `${year}: ${value} businesses`;
+      const { month, value } = pt.dataset;
+      tooltip.textContent = `${month}: ${value} leads`;
       const cx = parseFloat(pt.getAttribute('cx'));
       const cy = parseFloat(pt.getAttribute('cy'));
       const pct = (cx / 720) * 100;
