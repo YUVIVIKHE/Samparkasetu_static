@@ -404,7 +404,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stats-section { background:
   radial-gradient(900px 400px at 20% 0%, rgba(255,255,255,.12), transparent 60%),
   linear-gradient(135deg, #0F172A 0%, #14532D 100%); }
-.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .stat-box { text-align: center; padding: 28px 14px; border-radius: var(--radius);
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
 .stat-box strong { display: block; font-family: var(--font-head); font-weight: 800;

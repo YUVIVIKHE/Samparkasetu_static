@@ -44,23 +44,23 @@
   }
 
   /* ---------- Animated Counters ---------- */
+  const inrFormat = new Intl.NumberFormat('en-IN');
   const animateCounter = (el) => {
     const target = parseFloat(el.dataset.target);
     const suffix = el.dataset.suffix || '';
     const prefix = el.dataset.prefix || '';
     const dur = 1800;
     const start = performance.now();
-    const fmt = (n) => {
-      if (target >= 1000) return Math.round(n).toLocaleString('en-IN');
-      return Math.round(n).toString();
-    };
+    const fmt = (n) => (target >= 1000 ? inrFormat.format(Math.round(n)) : Math.round(n).toString());
     if (reduce) { el.textContent = prefix + fmt(target) + suffix; return; }
+    let lastVal = -1;
     const tick = (now) => {
       const p = Math.min((now - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-      el.textContent = prefix + fmt(target * eased) + suffix;
+      const val = Math.round(target * eased);
+      if (val !== lastVal) { el.textContent = prefix + fmt(val) + suffix; lastVal = val; }
       if (p < 1) requestAnimationFrame(tick);
-      else el.textContent = prefix + fmt(target) + suffix;
+      else if (val !== target) el.textContent = prefix + fmt(target) + suffix;
     };
     requestAnimationFrame(tick);
   };
