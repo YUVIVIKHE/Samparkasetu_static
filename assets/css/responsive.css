@@ -156,79 +156,96 @@
   .chip-grid { gap: 8px; }
   .eco-chip { font-size: 13px; padding: 8px 14px; }
 
-  /* ---- Swipe track: turn grids into horizontal scroll carousels ---- */
+  /* ---- Content cards: stack into tidy grids on mobile (no horizontal slide) ---- */
   .card-grid,
   .ai-grid,
-  .industry-grid,
-  .benefit-grid {
-    display: block;         /* remove grid context so track takes over */
-    overflow: hidden;
+  .benefit-grid,
+  .testimonial-grid {
+    display: block;
+    overflow: visible;
   }
 
-  .swipe-track {
-    display: flex !important;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 4px 2px 12px;
-    /* pull flush to container edge for peek effect */
-    margin: 0 -16px;
-    padding-left: 16px;
-    padding-right: 16px;
+  /* the track becomes a wrapping grid so every card is visible at once */
+  .card-grid > .swipe-track,
+  .ai-grid > .swipe-track,
+  .benefit-grid > .swipe-track,
+  .testimonial-grid > .swipe-track {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
   }
-  .swipe-track::-webkit-scrollbar { display: none; }
 
-  /* each swipe card: fixed width so one (or 1.1) shows at a time */
-  .swipe-card {
-    flex: 0 0 78vw;
-    max-width: 300px;
-    scroll-snap-align: start;
+  .card-grid > .swipe-track > .swipe-card,
+  .ai-grid > .swipe-track > .swipe-card,
+  .benefit-grid > .swipe-track > .swipe-card,
+  .testimonial-grid > .swipe-track > .swipe-card {
+    width: auto;
+    max-width: none;
     min-width: 0;
   }
 
   /* Module cards */
-  .card.swipe-card { padding: 22px 18px; }
-  .card.swipe-card h3 { font-size: 16px; }
-  .card-ic { width: 44px; height: 44px; font-size: 20px; margin-bottom: 12px; }
+  .card.swipe-card { padding: 20px 16px; }
+  .card.swipe-card h3 { font-size: 15px; }
+  .card.swipe-card p { font-size: 13px; }
+  .card-ic { width: 42px; height: 42px; font-size: 20px; margin-bottom: 10px; }
 
   /* AI cards */
-  .ai-card.swipe-card { padding: 22px 18px; }
-  .ai-card.swipe-card h3 { font-size: 15px; }
-  .ai-ic { width: 42px; height: 42px; margin-bottom: 12px; }
+  .ai-card.swipe-card { padding: 20px 16px; }
+  .ai-card.swipe-card h3 { font-size: 14.5px; }
+  .ai-card.swipe-card p { font-size: 12.5px; }
+  .ai-ic { width: 40px; height: 40px; margin-bottom: 10px; }
 
-  /* Industry cards — slightly narrower, 2 semi-visible */
+  /* Benefit cards */
+  .benefit-card.swipe-card { padding: 20px 16px; }
+  .benefit-card.swipe-card h3 { font-size: 15px; }
+  .benefit-card.swipe-card p { font-size: 13px; }
+
+  /* Testimonials — full width, one per row */
+  .testimonial-grid > .swipe-track { grid-template-columns: 1fr; }
+  .testimonial.swipe-card { padding: 22px 18px; }
+  .t-quote { font-size: 14.5px; }
+
+  /* ---- Industries: keep a compact swipe (small chips) ---- */
+  .industry-grid {
+    display: block;
+    overflow: hidden;
+  }
+  .industry-grid > .swipe-track {
+    display: flex !important;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 16px 12px;
+    margin: 0 -16px;
+  }
+  .industry-grid > .swipe-track::-webkit-scrollbar { display: none; }
   .industry-card.swipe-card {
-    flex: 0 0 56vw;
-    max-width: 220px;
+    flex: 0 0 44vw;
+    max-width: 190px;
+    scroll-snap-align: start;
     padding: 16px 14px;
     gap: 10px;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    min-width: 0;
   }
   .industry-card.swipe-card .ind-ic { font-size: 28px; }
   .industry-card.swipe-card span { font-size: 14px; }
 
-  /* Benefit cards */
-  .benefit-card.swipe-card { padding: 22px 18px; }
-  .benefit-card.swipe-card h3 { font-size: 16px; }
-
-  /* Testimonials — also swipe */
-  .testimonial-grid {
-    display: block;
-    overflow: hidden;
-  }
-  .testimonial.swipe-card { flex: 0 0 82vw; max-width: 320px; padding: 22px 18px; }
-  .t-quote { font-size: 14.5px; }
-
-  /* Dot indicators */
+  /* Dots: only the industry carousel keeps them; hide the rest */
+  #modulesDots, #aiDots, #benefitDots, #testimonialDots { display: none !important; }
   .swipe-dots {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 4px;
+    margin-top: 8px;
     padding-bottom: 4px;
   }
   .swipe-dot {
