@@ -364,9 +364,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ai-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 26px; box-shadow: var(--shadow-sm); transition: transform .35s var(--ease), box-shadow .35s var(--ease); position: relative; }
 .ai-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.ai-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center;
-  background: var(--ink); color: #fff; margin-bottom: 16px; }
-.ai-ic svg { stroke: var(--green); }
 .ai-card h3 { font-family: var(--font-head); font-weight: 700; font-size: 16px; margin-bottom: 6px; }
 .ai-card p { font-size: 13.5px; color: var(--muted); }
 

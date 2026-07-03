@@ -11,12 +11,10 @@
     ['🧩', 'Dealer CRM', 'Manage every dealer relationship, pipeline and follow-up in one place.'],
     ['🎯', 'Lead Management', 'Capture, route and qualify leads automatically across channels.'],
     ['👨‍🌾', 'Farmer Network', 'A connected community of farmers, FPOs and service buyers.'],
-    ['🗓️', 'Service Booking', 'On-demand booking for repairs, spraying, rentals and more.'],
     ['🏭', 'OEM Dashboard', 'Real-time visibility into dealers, demand and field performance.'],
     ['📊', 'Analytics', 'Actionable insights on sales, regions, products and trends.'],
     ['📱', 'Mobile App', 'Run your agri-business on the go, even in low-connectivity areas.'],
     ['🤖', 'AI Assistant', 'Conversational AI that handles enquiries and recommends actions.'],
-    ['💳', 'Finance', 'Embedded credit and financing workflows for equipment & inputs.'],
     ['♻️', 'Old Equipment Marketplace', 'A trusted resale ecosystem for pre-owned machinery.'],
   ];
 
@@ -75,7 +73,6 @@
   /* ============ Renderers ============ */
   const esc = (s) => s.replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
-  const aiIcon = `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1 0 8v1a4 4 0 0 1-8 0v-1a4 4 0 0 1 0-8V6a4 4 0 0 1 4-4z"/><path d="M12 8v8M8 12h8"/></svg>`;
 
   const render = (sel, html) => { const el = $(sel); if (el) el.innerHTML = html; };
 
@@ -89,7 +86,7 @@
   render('#aiGrid',
     `<div class="swipe-track" id="aiTrack">${
       aiFeatures.map(([t, d]) =>
-        `<article class="ai-card swipe-card"><div class="ai-ic">${aiIcon}</div><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`
+        `<article class="ai-card swipe-card"><h3>${esc(t)}</h3><p>${esc(d)}</p></article>`
       ).join('')
     }</div><div class="swipe-dots" id="aiDots"></div>`);
 
