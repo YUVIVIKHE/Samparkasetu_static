@@ -30,19 +30,14 @@
   ];
 
   const industries = [
-    ['🚜', 'Agriculture Machinery'], ['🌱', 'Agri Inputs'], ['🥛', 'Dairy'],
-    ['🐄', 'Livestock'], ['🏭', 'Food Processing'], ['💧', 'Irrigation'],
-    ['☀️', 'Solar'], ['🏦', 'Financial Services'], ['🤝', 'NGOs'], ['🌾', 'FPOs'],
+    ['🚜', 'Agriculture Machinery'], ['💧', 'Irrigation'],
+    ['☀️', 'Solar'], ['🌾', 'FPOs'],
   ];
 
   const benefits = [
     ['👨‍🌾', 'Farmers', 'Discover trusted dealers, services, finance and the best prices.'],
     ['🏪', 'Dealers', 'More qualified leads, faster conversions and loyal customers.'],
     ['🏭', 'Manufacturers', 'Direct line of sight into demand, dealers and field data.'],
-    ['🚛', 'Distributors', 'Streamlined networks and smarter inventory movement.'],
-    ['🏦', 'Banks', 'Reach credit-worthy agri-customers with embedded lending.'],
-    ['💼', 'NBFCs', 'Scale agri-financing with verified, data-rich borrowers.'],
-    ['🌐', 'Agri Businesses', 'A unified platform to grow across the value chain.'],
   ];
 
   const steps = [
@@ -207,9 +202,12 @@
   });
 
   /* ============ Contact FAB ============ */
-  $('#contactFab').addEventListener('click', () => {
-    window.location.href = 'mailto:support@samparkasetu.com?subject=Samparkasetu%20Enquiry';
-  });
+  const contactFab = $('#contactFab');
+  if (contactFab) {
+    contactFab.addEventListener('click', () => {
+      window.location.href = 'contact.html';
+    });
+  }
 
   /* ============ Video Showcase Player ============ */
   const vFrame = $('#videoFrame');
