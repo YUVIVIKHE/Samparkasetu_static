@@ -6,7 +6,7 @@
 @media (max-width: 1080px) {
   :root { --maxw: 960px; }
   .card-grid, .ai-grid { grid-template-columns: repeat(3, 1fr); }
-  .industry-grid { grid-template-columns: repeat(3, 1fr); }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
@@ -29,7 +29,8 @@
 
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
   .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
-  .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+  .benefit-grid { grid-template-columns: repeat(3, 1fr); }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* hide custom cursor on touch */
   .cursor-dot, .cursor-ring, .mouse-glow { display: none; }
@@ -62,6 +63,12 @@
   .section-head { margin-bottom: 32px; }
   .section-lead { font-size: 15.5px; }
   .section-title { font-size: clamp(24px, 7vw, 32px); }
+  .section-title.one-line {
+    white-space: nowrap;
+    font-size: clamp(11px, calc((100vw - 40px) / 22), 22px);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
 
   /* ---- Navbar ---- */
   .navbar { padding: 12px 0; }
@@ -198,7 +205,8 @@
   .ai-card.swipe-card h3 { font-size: 14.5px; }
   .ai-card.swipe-card p { font-size: 12.5px; }
 
-  /* Benefit cards */
+  /* Benefit cards — 3 cards, one per row on mobile */
+  .benefit-grid > .swipe-track { grid-template-columns: 1fr; }
   .benefit-card.swipe-card { padding: 20px 16px; }
   .benefit-card.swipe-card h3 { font-size: 15px; }
   .benefit-card.swipe-card p { font-size: 13px; }
@@ -208,38 +216,34 @@
   .testimonial.swipe-card { padding: 22px 18px; }
   .t-quote { font-size: 14.5px; }
 
-  /* ---- Industries: keep a compact swipe (small chips) ---- */
+  /* ---- Industries: 2×2 grid (4 items, no horizontal swipe) ---- */
   .industry-grid {
     display: block;
-    overflow: hidden;
+    overflow: visible;
   }
   .industry-grid > .swipe-track {
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 4px 16px 12px;
-    margin: 0 -16px;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
   }
-  .industry-grid > .swipe-track::-webkit-scrollbar { display: none; }
   .industry-card.swipe-card {
-    flex: 0 0 44vw;
-    max-width: 190px;
-    scroll-snap-align: start;
+    width: auto;
+    max-width: none;
+    min-width: 0;
     padding: 16px 14px;
     gap: 10px;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    min-width: 0;
   }
   .industry-card.swipe-card .ind-ic { font-size: 28px; }
   .industry-card.swipe-card span { font-size: 14px; }
 
-  /* Dots: only the industry carousel keeps them; hide the rest */
-  #modulesDots, #aiDots, #benefitDots, #testimonialDots { display: none !important; }
+  /* Hide carousel dots — all cards are fully visible */
+  #modulesDots, #aiDots, #benefitDots, #testimonialDots, #industryDots { display: none !important; }
   .swipe-dots {
     display: flex;
     justify-content: center;
@@ -329,6 +333,9 @@
   .container { padding: 0 14px; }
   .hero-title { font-size: clamp(25px, 8.5vw, 30px); }
   .section-title { font-size: clamp(22px, 7.5vw, 28px); }
+  .section-title.one-line {
+    font-size: clamp(10px, calc((100vw - 32px) / 22), 18px);
+  }
 
   .hero-stats { flex-wrap: wrap; gap: 12px 0; }
   .hero-stat { flex: 1 0 33%; }
@@ -336,8 +343,6 @@
   .dash-kpis { grid-template-columns: 1fr; gap: 6px; }
   .kpi { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .kpi strong { margin-top: 0; }
-
-  .industry-grid { grid-template-columns: 1fr; }
 
   .footer-cols { grid-template-columns: 1fr; gap: 20px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -364,7 +369,8 @@
   /* ---- Section heading rhythm ---- */
   .kicker { font-size: 11.5px; padding: 6px 12px; margin-bottom: 14px; letter-spacing: .1em; }
   .section-head { padding: 0 4px; }
-  .section-lead { margin-top: 12px; line-height: 1.6; }
+  .section-head:has(.section-title.one-line) { padding: 0; }
+  .section-lead { margin-top: 12px; line-height: 1.6; max-width: 36em; margin-left: auto; margin-right: auto; }
 
   /* Tighten the gap between heading block and the swipe rail */
   .section-head + .swipe-track,

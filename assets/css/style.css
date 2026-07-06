@@ -88,13 +88,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .section-head:has(.section-title.one-line) {
   max-width: 100%;
+  overflow: hidden;
 }
 .section-title.one-line {
   white-space: nowrap;
-  font-size: clamp(13px, 3.4vw, 44px);
+  /* Scale to always fit one centered line (longest title ~42 chars) */
+  font-size: clamp(12px, calc((100vw - 48px) / 22), 44px);
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
 }
 .section-title.light { color: #fff; }
 .section-lead { margin-top: 18px; font-size: 18px; color: var(--muted); }
