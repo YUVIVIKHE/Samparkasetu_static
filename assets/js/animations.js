@@ -126,7 +126,18 @@
   /* ---------- Typewriter (eyebrow rotating phrases) ---------- */
   const twTarget = $('.tw-text');
   if (twTarget && !reduce) {
-    const phrases = ['Where Agritech Meets the Future of Sales.', 'Built for the Fields. Powered by AI.', 'Every Lead Qualified. Every Dealer Empowered.'];
+    const mobile = window.matchMedia('(max-width: 640px)').matches;
+    const phrases = mobile
+      ? [
+          'Agritech meets the future of sales.',
+          'Built for the fields. Powered by AI.',
+          'Every lead qualified. Every dealer empowered.',
+        ]
+      : [
+          'Where Agritech Meets the Future of Sales.',
+          'Built for the Fields. Powered by AI.',
+          'Every Lead Qualified. Every Dealer Empowered.',
+        ];
     twTarget.textContent = '';                  // clear the static seed text
     const textNode = document.createTextNode('');
     twTarget.appendChild(textNode);
@@ -224,7 +235,7 @@
     ticking = true;
     requestAnimationFrame(() => {
       onScrollProgress();
-      if (!reduce) {
+      if (!reduce && !isTouch) {
         const y = window.scrollY;
         shapes.forEach((s, i) => { s.style.transform = `translateY(${y * (0.06 + i * 0.03)}px)`; });
         if (heroCard && y < 900) heroCard.style.transform = `translateY(${y * -0.04}px)`;

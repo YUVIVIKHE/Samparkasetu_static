@@ -110,11 +110,13 @@
     padding: 8px 14px;
     max-width: 100%;
     width: 100%;
+    min-height: 52px;
     justify-content: center;
     text-align: center;
     line-height: 1.45;
     flex-wrap: wrap;
     gap: 6px 8px;
+    align-content: center;
   }
   .tw-text {
     min-width: 0;
@@ -122,6 +124,10 @@
     white-space: normal;
     text-align: center;
   }
+
+  /* Lock page to vertical scroll only */
+  html, body, main { overflow-x: clip; touch-action: pan-y; }
+  .container, .section, .hero, .hero-copy, .hero-grid-layout { max-width: 100%; }
 
   .about-collage { grid-template-columns: 1fr; grid-template-rows: none; gap: 12px; }
   .ap-1, .ap-2, .ap-3 { grid-column: 1; grid-row: auto; }
@@ -282,30 +288,23 @@
   .industry-card.swipe-card .ind-ic { font-size: 28px; }
   .industry-card.swipe-card span { font-size: 14px; }
 
-  /* Hide carousel dots — all cards are fully visible */
+  /* Hide carousel dots — static grids on mobile */
   #modulesDots, #aiDots, #benefitDots, #testimonialDots, #industryDots { display: none !important; }
-  .swipe-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-    padding-bottom: 4px;
+
+  /* Kill leftover swipe-carousel behavior */
+  .swipe-track,
+  .card-grid > .swipe-track,
+  .ai-grid > .swipe-track,
+  .benefit-grid > .swipe-track,
+  .testimonial-grid > .swipe-track,
+  .industry-grid > .swipe-track {
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    -webkit-overflow-scrolling: auto;
+    touch-action: auto;
   }
-  .swipe-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--line);
-    border: none;
-    cursor: pointer;
-    transition: background .2s, transform .2s, width .25s;
-    padding: 0;
-  }
-  .swipe-dot.active {
-    background: var(--green);
-    width: 22px;
-    border-radius: 4px;
-    transform: none;
-  }
+  .swipe-track::after { display: none !important; content: none !important; }
+  .swipe-dots { display: none !important; }
 
   /* ---- Stats ---- */
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -449,22 +448,6 @@
     box-shadow: 0 4px 14px -10px rgba(15, 23, 42, .3);
   }
 
-  /* Subtle scroll padding so first/last card breathe at the edges */
-  .swipe-track {
-    scroll-padding-left: 16px;
-    padding-bottom: 10px;
-  }
-  /* trailing spacer so the last card can fully snap into view */
-  .swipe-track::after {
-    content: "";
-    flex: 0 0 2px;
-  }
-
-  /* ---- "Swipe" affordance hint under each rail's first paint ---- */
-  .swipe-dots { margin-top: 14px; }
-  .swipe-dot { width: 7px; height: 7px; }
-  .swipe-dot.active { width: 20px; }
-
   /* ---- Industry cards: give the icon a soft tile for hierarchy ---- */
   .industry-card.swipe-card { box-shadow: 0 8px 24px -14px rgba(15, 23, 42, .22); }
   .industry-card.swipe-card .ind-ic {
@@ -472,6 +455,11 @@
     width: 48px; height: 48px; border-radius: 14px;
     background: var(--grad-soft);
   }
+
+  /* ---- Hero: stable layout, no floating dashboard on touch ---- */
+  .float-soft { animation: none; }
+  .reveal[data-anim="fade-left"],
+  .reveal[data-anim="fade-right"] { transform: translateY(34px); }
 
   /* ---- Hero: tighten eyebrow + add gentle entrance feel ---- */
   .hero-stat strong { background: var(--grad); -webkit-background-clip: text;
