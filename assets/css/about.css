@@ -66,10 +66,6 @@
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .mv-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.mv-card-accent {
-  background: var(--grad); border-color: transparent; color: #fff;
-}
-.mv-card-accent h2, .mv-card-accent p { color: #fff; }
 .mv-icon { font-size: 36px; margin-bottom: 18px; }
 .mv-card h2 {
   font-family: var(--font-head); font-weight: 800; font-size: 20px;
@@ -86,6 +82,42 @@
 }
 .story-text p:last-child { margin-bottom: 0; }
 .story-text em { color: var(--green); font-style: normal; font-weight: 600; }
+
+/* ---- Company facts ---- */
+.company-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.fact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s;
+}
+.fact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.fact-label {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.fact-card strong {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.fact-link { text-decoration: none; }
+.fact-link:hover { border-color: var(--green); }
+.fact-link strong { color: var(--green); }
 
 .story-milestones { display: flex; flex-direction: column; gap: 0; }
 .milestone {
@@ -125,7 +157,28 @@
 
 /* ---- Who We Serve ---- */
 .serve-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.serve-grid.serve-grid-3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 980px;
+  margin: 0 auto;
+  width: 100%;
+}
+.serve-grid.serve-grid-3 .serve-card {
+  flex: 0 1 280px;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .serve-card {
   background: var(--card); border: 1px solid var(--line);
@@ -149,16 +202,22 @@
   .story-grid { grid-template-columns: 1fr; gap: 40px; }
   .values-grid { grid-template-columns: 1fr 1fr; }
   .serve-grid { grid-template-columns: repeat(2, 1fr); }
+  .serve-grid.serve-grid-3 {
+    display: flex;
+    justify-content: center;
+  }
+  .serve-grid.serve-grid-3 .serve-card {
+    flex: 0 1 240px;
+    max-width: 280px;
+  }
 }
 @media (max-width: 640px) {
   .about-hero-cta .btn { width: 100%; justify-content: center; min-height: 48px; }
-  /* touch-press feedback on all cards */
-  .mv-card:active, .value-card:active, .serve-card:active, .ahs-card:active {
+  .mv-card:active, .value-card:active, .serve-card:active, .ahs-card:active, .fact-card:active {
     transform: scale(.98);
   }
-  .mv-card, .value-card, .serve-card { box-shadow: 0 8px 24px -16px rgba(15,23,42,.25); }
+  .mv-card, .value-card, .serve-card, .fact-card { box-shadow: 0 8px 24px -16px rgba(15,23,42,.25); }
   .section-head { padding: 0 4px; }
-  /* milestones connector line for visual rhythm */
   .story-milestones { position: relative; }
 }
 @media (max-width: 540px) {
@@ -168,7 +227,18 @@
   .about-hero-stats .ahs-card:last-child { grid-column: 1 / -1; }
   .about-hero-cta { flex-direction: column; }
   .values-grid { grid-template-columns: 1fr; }
-  .serve-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .serve-grid { grid-template-columns: 1fr; gap: 12px; }
+  .serve-grid.serve-grid-3 {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .serve-grid.serve-grid-3 .serve-card {
+    flex: 0 0 auto;
+    max-width: 360px;
+    width: 100%;
+  }
+  .company-facts { grid-template-columns: 1fr; }
   .mv-card { padding: 28px 22px; }
   .value-card, .serve-card { padding: 22px 18px; }
 }

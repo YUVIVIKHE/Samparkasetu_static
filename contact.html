@@ -92,6 +92,9 @@
             <h2>Send us a message</h2>
             <p>Fill in the form and we'll get back to you within 24 hours.</p>
             <form id="contactForm" novalidate>
+              <!-- Get your free access key at https://web3forms.com (set recipient to support@samparkasetu.com) -->
+              <input type="hidden" name="access_key" id="web3formsKey" value="e35c3a9b-9fd3-4ff2-b4ea-d2fb812b9782" />
+              <input type="hidden" name="subject" id="cf-hidden-subject" value="New contact form message — Samparkasetu" />
               <div class="form-row">
                 <div class="form-field">
                   <label for="cf-name">Full Name <span class="req">*</span></label>
@@ -122,7 +125,7 @@
               </div>
               <div class="form-field">
                 <label for="cf-subject">Subject</label>
-                <input type="text" id="cf-subject" name="subject" placeholder="Demo request, Partnership, Support…" />
+                <input type="text" id="cf-subject" placeholder="Demo request, Partnership, Support…" />
               </div>
               <div class="form-field">
                 <label for="cf-message">Message <span class="req">*</span></label>
@@ -297,11 +300,15 @@
       }));
     }
 
-    // Contact form
+    // Contact form → Web3Forms (emails support@samparkasetu.com)
     const form = document.getElementById('contactForm');
     const note = document.getElementById('formNote');
+    const accessKeyInput = document.getElementById('web3formsKey');
+    const hiddenSubject = document.getElementById('cf-hidden-subject');
+    const subjectInput = document.getElementById('cf-subject');
+
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const required = form.querySelectorAll('[required]');
         let valid = true;
@@ -314,16 +321,55 @@
           note.className = 'form-note error';
           return;
         }
+
+        if (!accessKeyInput || accessKeyInput.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+          note.textContent = 'Form is not configured yet. Please email support@samparkasetu.com directly.';
+          note.className = 'form-note error';
+          return;
+        }
+
         const btn = form.querySelector('.contact-submit');
+        const subjectVal = subjectInput && subjectInput.value.trim();
+        if (hiddenSubject) {
+          hiddenSubject.value = subjectVal
+            ? `${subjectVal} — Samparkasetu Contact Form`
+            : 'New contact form message — Samparkasetu';
+        }
+
         btn.textContent = 'Sending…';
         btn.disabled = true;
-        setTimeout(() => {
+        note.textContent = '';
+        note.className = 'form-note';
+
+        try {
+          const payload = new FormData();
+          payload.append('access_key', accessKeyInput.value);
+          payload.append('name', form.name.value.trim());
+          payload.append('phone', form.phone.value.trim());
+          payload.append('email', form.email.value.trim());
+          payload.append('role', form.role.value);
+          payload.append('message', form.message.value.trim());
+          payload.append('subject', hiddenSubject ? hiddenSubject.value : 'New contact form message — Samparkasetu');
+
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: payload,
+          });
+          const data = await res.json();
+          if (!res.ok || !data.success) {
+            throw new Error(data.message || 'Unable to send message.');
+          }
           note.textContent = 'Thank you! We\'ll get back to you within 24 hours.';
           note.className = 'form-note success';
           form.reset();
+        } catch (err) {
+          note.textContent = err.message || 'Something went wrong. Please email support@samparkasetu.com or call +91 76765 77402.';
+          note.className = 'form-note error';
+        } finally {
           btn.textContent = 'Send Message';
           btn.disabled = false;
-        }, 1200);
+        }
       });
     }
   </script>
