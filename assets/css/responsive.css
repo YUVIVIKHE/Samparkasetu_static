@@ -466,7 +466,7 @@
     background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
   /* ---- Primary CTA: more presence on small screens ---- */
-  .hero-cta .btn-primary { box-shadow: 0 14px 30px -10px rgba(22, 163, 74, .5); }
+  .hero-cta .btn-primary { box-shadow: 0 14px 30px -10px rgba(37, 99, 235, .5); }
 
   /* ---- FAQ: snappier tap target + clearer open state ---- */
   .faq-item { margin-bottom: 10px; border-radius: 14px; }

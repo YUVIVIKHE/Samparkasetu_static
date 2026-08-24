@@ -196,7 +196,7 @@
     const input = $('#nlEmail');
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
     if (!ok) { note.style.color = '#dc2626'; note.textContent = 'Please enter a valid email address.'; return; }
-    note.style.color = '#16A34A';
+    note.style.color = '#2563EB';
     note.textContent = 'Thanks! You’re on the list. 🌱';
     nl.reset();
   });
