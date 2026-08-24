@@ -15,9 +15,9 @@
   .nav-links, .nav-actions { display: none; }
   .nav-toggle { display: flex; }
 
-  .section { padding: 80px 0; }
+  :root { --section-y: 48px; --section-head-gap: 28px; }
 
-  .hero { padding: 120px 0 64px; }
+  .hero { padding: 120px 0 var(--section-y); }
   .hero-grid-layout { grid-template-columns: 1fr; gap: 48px; text-align: center; }
   .hero-copy { display: flex; flex-direction: column; align-items: center; }
   .hero-sub { max-width: 600px; }
@@ -58,9 +58,9 @@
    ========================================================= */
 @media (max-width: 640px) {
   body { font-size: 15px; }
+  :root { --section-y: 40px; --section-head-gap: 24px; }
+
   .container { padding: 0 16px; }
-  .section { padding: 56px 0; }
-  .section-head { margin-bottom: 32px; }
   .section-lead { font-size: 15.5px; }
   .section-title { font-size: clamp(24px, 7vw, 32px); }
   .section-title.one-line {
@@ -92,18 +92,19 @@
   .mobile-menu .btn { margin-top: 6px; }
 
   /* ---- Hero ---- */
-  .hero { padding: 100px 0 48px; }
+  .hero { padding: 100px 0 var(--section-y); }
   .hero-grid-layout { gap: 36px; text-align: center; }
   .hero-copy { align-items: center; }
   .hero-title {
-    font-size: clamp(28px, 9vw, 38px);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    font-size: clamp(24px, 6.5vw, 32px);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    max-width: none;
   }
   .hero-sub {
-    font-size: 15.5px;
-    margin-top: 14px;
-    line-height: 1.65;
+    font-size: 15px;
+    margin-top: 12px;
+    line-height: 1.6;
   }
   .eyebrow {
     font-size: 12px;
@@ -198,7 +199,6 @@
   .logo-chip { font-size: 14px; padding: 10px 18px; }
 
   /* ---- Video showcase ---- */
-  .showcase { padding-top: 48px; }
   .video-badge { font-size: 12px; padding: 7px 14px; margin-bottom: 14px; }
   .video-frame-wrap { padding: 3px; border-radius: calc(var(--radius-lg) + 4px); }
   .video-controls { padding: 10px 12px; gap: 8px; }
@@ -257,9 +257,10 @@
   .benefit-card.swipe-card h3 { font-size: 15px; }
   .benefit-card.swipe-card p { font-size: 13px; }
 
-  /* Testimonials — full width, one per row */
+  /* Testimonials — full width, one per row; show first 3 only on mobile */
   .testimonial-grid > .swipe-track { grid-template-columns: 1fr; }
   .testimonial.swipe-card { padding: 22px 18px; }
+  .testimonial-grid > .swipe-track > .testimonial.swipe-card:nth-child(n+4) { display: none; }
   .t-quote { font-size: 14.5px; }
 
   /* ---- Industries: 2×2 grid (4 items, no horizontal swipe) ---- */
@@ -327,7 +328,6 @@
   .faq-a p { padding: 0 18px 18px; font-size: 14px; }
 
   /* ---- CTA ---- */
-  .cta-section { padding: 32px 0 80px; }
   .cta-card { padding: 44px 18px; border-radius: var(--radius); }
   .cta-title { font-size: clamp(24px, 7vw, 32px); }
   .cta-sub { font-size: 15.5px; margin-bottom: 24px; }
@@ -370,7 +370,7 @@
 /* ---- Small phones (≤ 400px) ---- */
 @media (max-width: 400px) {
   .container { padding: 0 14px; }
-  .hero-title { font-size: clamp(25px, 8.5vw, 30px); }
+  .hero-title { font-size: clamp(22px, 6.2vw, 28px); }
   .section-title { font-size: clamp(22px, 7.5vw, 28px); }
   .section-title.one-line {
     font-size: clamp(10px, calc((100vw - 32px) / 22), 18px);
@@ -466,7 +466,7 @@
     background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
   /* ---- Primary CTA: more presence on small screens ---- */
-  .hero-cta .btn-primary { box-shadow: 0 14px 30px -10px rgba(37, 99, 235, .5); }
+  .hero-cta .btn-primary { box-shadow: 0 14px 30px -10px rgba(22, 163, 74, .5); }
 
   /* ---- FAQ: snappier tap target + clearer open state ---- */
   .faq-item { margin-bottom: 10px; border-radius: 14px; }
@@ -493,7 +493,7 @@
 
 /* ---- Landscape phones: reclaim vertical space ---- */
 @media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
-  .hero { padding: 92px 0 40px; }
-  .section { padding: 48px 0; }
+  :root { --section-y: 36px; }
+  .hero { padding: 92px 0 var(--section-y); }
   .mobile-menu { padding-top: 72px; gap: 0; }
 }

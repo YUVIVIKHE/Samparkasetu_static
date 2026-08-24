@@ -31,7 +31,8 @@
   transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s;
 }
 .channel-card:hover { transform: translateX(6px); box-shadow: var(--shadow); border-color: var(--green); }
-.ch-icon { font-size: 26px; flex-shrink: 0; }
+.ch-icon { flex-shrink: 0; display: inline-flex; color: var(--green); min-width: 28px; }
+.ch-icon .ic { display: block; }
 .channel-card strong { display: block; font-weight: 700; font-size: 15px; color: var(--ink); }
 .channel-card span { font-size: 14px; color: var(--muted); }
 
@@ -71,7 +72,7 @@
 .form-field select:focus,
 .form-field textarea:focus {
   border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235,.12);
+  box-shadow: 0 0 0 3px rgba(22,163,74,.12);
 }
 .form-field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
 .field-error { border-color: #EF4444 !important; box-shadow: 0 0 0 3px rgba(239,68,68,.12) !important; }
@@ -89,10 +90,15 @@
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius-sm); padding: 28px 22px; text-align: center;
   box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; align-items: center;
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .info-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.info-icon { font-size: 32px; display: block; margin-bottom: 14px; }
+.info-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; margin: 0 auto 14px; color: var(--green);
+}
+.info-icon .ic { display: block; }
 .info-card h3 {
   font-family: var(--font-head); font-weight: 700; font-size: 15px;
   color: var(--ink); margin-bottom: 8px;

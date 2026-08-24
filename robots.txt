@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /advertising-terms.html
 
 Sitemap: https://www.samparkasetu.com/sitemap.xml
