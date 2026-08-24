@@ -6,7 +6,7 @@
 .legal-hero {
   padding: 140px 0 64px;
   background:
-    radial-gradient(900px 400px at 60% 0%, rgba(22,163,74,.08), transparent 60%),
+    radial-gradient(900px 400px at 60% 0%, rgba(37, 99, 235,.08), transparent 60%),
     linear-gradient(180deg, #fff 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--line);
   text-align: center;
@@ -59,7 +59,7 @@
   align-items: flex-start;
   gap: 16px;
   background: var(--green-soft);
-  border: 1px solid rgba(22,163,74,.2);
+  border: 1px solid rgba(37, 99, 235,.2);
   border-radius: var(--radius-sm);
   padding: 20px 24px;
   margin-bottom: 40px;

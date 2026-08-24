@@ -6,37 +6,16 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-  /* ============ SVG icons (no emoji) ============ */
-  const svg = (paths, view = '0 0 24 24') =>
-    `<svg class="ic" viewBox="${view}" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
-
-  const I = {
-    crm: svg('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
-    target: svg('<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'),
-    users: svg('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'),
-    building: svg('<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22V12h6v10"/><path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01"/>'),
-    chart: svg('<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/>'),
-    phone: svg('<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>'),
-    bot: svg('<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 2v6"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/><path d="M8 20v2M16 20v2"/>'),
-    refresh: svg('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>'),
-    tractor: svg('<path d="M3 17a3 3 0 1 0 6 0"/><path d="M15 17a4 4 0 1 0 8 0"/><path d="M3 12h5l2-5h6l3 5h2"/><path d="M10 7V5h4"/>'),
-    droplet: svg('<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>'),
-    sun: svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>'),
-    leaf: svg('<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>'),
-    store: svg('<path d="M3 9l1-4h16l1 4"/><path d="M3 9v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 22V12h6v10"/>'),
-    star: `<svg class="ic" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-  };
-
   /* ============ Content Data ============ */
   const modules = [
-    [I.crm, 'Dealer CRM', 'Manage every dealer relationship, pipeline and follow-up in one place.'],
-    [I.target, 'Lead Management', 'Capture, route and qualify leads automatically across channels.'],
-    [I.users, 'Farmer Network', 'A connected community of farmers, FPOs and service buyers.'],
-    [I.building, 'OEM Dashboard', 'Real-time visibility into dealers, demand and field performance.'],
-    [I.chart, 'Analytics', 'Actionable insights on sales, regions, products and trends.'],
-    [I.phone, 'Mobile App', 'Run your agri-business on the go, even in low-connectivity areas.'],
-    [I.bot, 'AI Assistant', 'Conversational AI that handles enquiries and recommends actions.'],
-    [I.refresh, 'Old Equipment Marketplace', 'A trusted resale ecosystem for pre-owned machinery.'],
+    ['🧩', 'Dealer CRM', 'Manage every dealer relationship, pipeline and follow-up in one place.'],
+    ['🎯', 'Lead Management', 'Capture, route and qualify leads automatically across channels.'],
+    ['👨‍🌾', 'Farmer Network', 'A connected community of farmers, FPOs and service buyers.'],
+    ['🏭', 'OEM Dashboard', 'Real-time visibility into dealers, demand and field performance.'],
+    ['📊', 'Analytics', 'Actionable insights on sales, regions, products and trends.'],
+    ['📱', 'Mobile App', 'Run your agri-business on the go, even in low-connectivity areas.'],
+    ['🤖', 'AI Assistant', 'Conversational AI that handles enquiries and recommends actions.'],
+    ['♻️', 'Old Equipment Marketplace', 'A trusted resale ecosystem for pre-owned machinery.'],
   ];
 
   const aiFeatures = [
@@ -51,14 +30,14 @@
   ];
 
   const industries = [
-    [I.tractor, 'Agriculture Machinery'], [I.droplet, 'Irrigation'],
-    [I.sun, 'Solar'], [I.leaf, 'FPOs'],
+    ['🚜', 'Agriculture Machinery'], ['💧', 'Irrigation'],
+    ['☀️', 'Solar'], ['🌾', 'FPOs'],
   ];
 
   const benefits = [
-    [I.users, 'Farmers', 'Discover trusted dealers, services, finance and the best prices.'],
-    [I.store, 'Dealers', 'More qualified leads, faster conversions and loyal customers.'],
-    [I.building, 'Manufacturers', 'Direct line of sight into demand, dealers and field data.'],
+    ['👨‍🌾', 'Farmers', 'Discover trusted dealers, services, finance and the best prices.'],
+    ['🏪', 'Dealers', 'More qualified leads, faster conversions and loyal customers.'],
+    ['🏭', 'Manufacturers', 'Direct line of sight into demand, dealers and field data.'],
   ];
 
   const steps = [
@@ -67,6 +46,14 @@
     ['Get Leads', 'AI captures, qualifies and routes high-intent leads straight to your dashboard in real time.'],
     ['Manage Leads', 'Track every lead through your pipeline, assign follow-ups and close deals from one place.'],
     ['Grow Business', 'Use analytics, AI insights and the full Samparkasetu network to scale your agri-business.'],
+  ];
+
+  const testimonials = [
+    ['The prequalified leads save us hours every day. We only call farmers who are genuinely ready to buy, and our conversions have shot up.', 'Jeevan Agro Enterprises', 'Powertrac Dealer', 'JA'],
+    ['One-click calling and instant WhatsApp alerts mean we never miss an enquiry. Samparkasetu has changed how our showroom runs.', 'Lokesh RS Tractors', 'Powertrac Dealer', 'LR'],
+    ['The dealer matching is brilliant — every lead that reaches us is the right fit. Our Mahindra sales pipeline has never been this organised.', 'Maruti Motors', 'Mahindra Dealer', 'MM'],
+    ['The agent app keeps my whole team on track with daily follow-ups. Nothing slips through the cracks anymore.', 'Radha Enterprises', 'Farmtrac Dealer', 'RE'],
+    ['From lead capture to closing, the entire journey is now digital. Samparkasetu is the backbone our dealership needed.', 'Shri Ranganatha Motors', 'Mahindra Dealer', 'SR'],
   ];
 
   const faqs = [
@@ -80,6 +67,8 @@
 
   /* ============ Renderers ============ */
   const esc = (s) => s.replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
+
+
   const render = (sel, html) => { const el = $(sel); if (el) el.innerHTML = html; };
 
   render('#modulesGrid',
@@ -113,28 +102,15 @@
   render('#timeline', steps.map(([t, d], n) =>
     `<li><span class="tl-num">${n + 1}</span><div class="tl-body"><h3>${esc(t)}</h3><p>${esc(d)}</p></div></li>`).join(''));
 
-  // Testimonials live in index.html (6 cards) — skip if already present
-  const testimonialGrid = $('#testimonialGrid');
-  if (testimonialGrid && !testimonialGrid.querySelector('.testimonial')) {
-    const testimonials = [
-      ['The prequalified leads save us hours every day. We only call farmers who are genuinely ready to buy, and our conversions have shot up.', 'Jeevan Agro Enterprises', 'Powertrac Dealer', 'JA'],
-      ['One-click calling and instant WhatsApp alerts mean we never miss an enquiry. Samparkasetu has changed how our showroom runs.', 'Lokesh RS Tractors', 'Powertrac Dealer', 'LR'],
-      ['The dealer matching is brilliant — every lead that reaches us is the right fit. Our Mahindra sales pipeline has never been this organised.', 'Maruti Motors', 'Mahindra Dealer', 'MM'],
-      ['The agent app keeps my whole team on track with daily follow-ups. Nothing slips through the cracks anymore.', 'Radha Enterprises', 'Farmtrac Dealer', 'RE'],
-      ['From lead capture to closing, the entire journey is now digital. Samparkasetu is the backbone our dealership needed.', 'Shri Ranganatha Motors', 'Mahindra Dealer', 'SR'],
-      ['Regional language support helps us reach farmers who never used an app before. Enquiries are clearer and follow-ups are faster.', 'Sri Venkateshwara Tractors', 'Sonalika Dealer', 'SV'],
-    ];
-    const stars = Array(5).fill(I.star).join('');
-    render('#testimonialGrid',
-      `<div class="swipe-track" id="testimonialTrack">${
-        testimonials.map(([q, a, r, av]) =>
-          `<article class="testimonial swipe-card"><div class="t-stars" aria-label="5 out of 5 stars">${stars}</div>
-            <p class="t-quote">"${esc(q)}"</p>
-            <div class="t-author"><div class="t-avatar">${esc(av)}</div><div><b>${esc(a)}</b><small>${esc(r)}</small></div></div>
-          </article>`
-        ).join('')
-      }</div>`);
-  }
+  render('#testimonialGrid',
+    `<div class="swipe-track" id="testimonialTrack">${
+      testimonials.map(([q, a, r, av]) =>
+        `<article class="testimonial swipe-card"><div class="t-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="t-quote">"${esc(q)}"</p>
+          <div class="t-author"><div class="t-avatar">${esc(av)}</div><div><b>${esc(a)}</b><small>${esc(r)}</small></div></div>
+        </article>`
+      ).join('')
+    }</div><div class="swipe-dots" id="testimonialDots"></div>`);
 
   render('#faqList', faqs.map(([q, a], i) =>
     `<div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faqa${i}">
@@ -220,8 +196,8 @@
     const input = $('#nlEmail');
     const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
     if (!ok) { note.style.color = '#dc2626'; note.textContent = 'Please enter a valid email address.'; return; }
-    note.style.color = '#16A34A';
-    note.textContent = 'Thanks! You’re on the list.';
+    note.style.color = '#2563EB';
+    note.textContent = 'Thanks! You’re on the list. 🌱';
     nl.reset();
   });
 
