@@ -44,11 +44,11 @@
 /* ---------- Animated Cursor ---------- */
 .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; z-index: 6000; pointer-events: none;
   border-radius: 50%; transform: translate(-50%, -50%); opacity: 0; }
-.cursor-dot { width: 7px; height: 7px; background: var(--green); transition: opacity .3s; }
+.cursor-dot { width: 7px; height: 7px; background: var(--blue); transition: opacity .3s; }
 .cursor-ring { width: 34px; height: 34px; border: 1.5px solid rgba(37, 99, 235,.5);
   transition: width .25s var(--ease), height .25s var(--ease), opacity .3s, background .25s; }
 .cursor-active .cursor-dot, .cursor-active .cursor-ring { opacity: 1; }
-.cursor-ring.hover { width: 54px; height: 54px; background: rgba(37, 99, 235,.08); border-color: var(--green); }
+.cursor-ring.hover { width: 54px; height: 54px; background: rgba(37, 99, 235,.08); border-color: var(--blue); }
 
 /* ---------- Floating shapes ---------- */
 .float-shape { position: absolute; border-radius: 50%; filter: blur(18px); z-index: 0; }
@@ -125,7 +125,7 @@
 .word { display: inline-block; }
 
 /* ---------- Typewriter caret ---------- */
-.tw-caret { display: inline-block; width: 2px; background: var(--green); margin-left: 2px;
+.tw-caret { display: inline-block; width: 2px; background: var(--blue); margin-left: 2px;
   animation: blink 1s step-end infinite; vertical-align: -2px; height: 1em; }
 @keyframes blink { 50% { opacity: 0; } }
 

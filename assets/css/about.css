@@ -51,7 +51,7 @@
 .ahs-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 .ahs-card strong {
   display: block; font-family: var(--font-head); font-weight: 800;
-  font-size: 26px; color: var(--green); margin-bottom: 6px;
+  font-size: 26px; color: var(--blue); margin-bottom: 6px;
 }
 .ahs-card span { font-size: 13px; color: var(--muted); }
 
@@ -81,7 +81,7 @@
   font-size: 16px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 18px;
 }
 .story-text p:last-child { margin-bottom: 0; }
-.story-text em { color: var(--green); font-style: normal; font-weight: 600; }
+.story-text em { color: var(--blue); font-style: normal; font-weight: 600; }
 
 /* ---- Company facts ---- */
 .company-facts {
@@ -116,8 +116,8 @@
   line-height: 1.35;
 }
 .fact-link { text-decoration: none; }
-.fact-link:hover { border-color: var(--green); }
-.fact-link strong { color: var(--green); }
+.fact-link:hover { border-color: var(--blue); }
+.fact-link strong { color: var(--blue); }
 
 .story-milestones { display: flex; flex-direction: column; gap: 0; }
 .milestone {
@@ -127,7 +127,7 @@
 .milestone:last-child { border-bottom: none; }
 .ms-year {
   font-family: var(--font-head); font-weight: 800; font-size: 13px;
-  color: var(--green); background: var(--green-soft);
+  color: var(--blue); background: var(--blue-soft);
   padding: 5px 10px; border-radius: 100px; white-space: nowrap; flex-shrink: 0;
   margin-top: 2px;
 }
@@ -186,7 +186,7 @@
   box-shadow: var(--shadow-sm);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
-.serve-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--green); }
+.serve-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--blue); }
 .serve-card span { font-size: 30px; display: block; margin-bottom: 10px; }
 .serve-card h4 {
   font-family: var(--font-head); font-weight: 700; font-size: 14px;
