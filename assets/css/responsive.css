@@ -31,6 +31,14 @@
   .about-collage { max-width: 600px; }
 
   .footer-top { grid-template-columns: 1fr; gap: 36px; }
+  .footer-brand p { max-width: none; }
+  .newsletter { max-width: 480px; }
+  .footer-cols { gap: 20px; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
   .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
   .benefit-grid { grid-template-columns: repeat(3, 1fr); }
   .industry-grid { grid-template-columns: repeat(2, 1fr); }
@@ -45,7 +53,10 @@
   .industry-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid .stat-box:last-child { grid-column: span 2; }
-  .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .footer-cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 12px; }
+  .footer-col h3 { font-size: 13px; }
+  .footer-col a { font-size: 13.5px; word-break: break-word; }
+  .newsletter { max-width: none; width: 100%; }
 }
 
 /* ---- Touch devices ---- */
@@ -342,26 +353,60 @@
 
   /* ---- Footer ---- */
   .footer { padding: 48px 0 28px; }
-  .footer-top { gap: 28px; padding-bottom: 32px; }
-  .footer-brand p { font-size: 14px; margin: 12px 0 16px; }
-  .footer-cols { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+  .footer-top { gap: 28px; padding-bottom: 28px; }
+  .footer-brand .nav-logo { justify-content: flex-start; }
+  .footer-brand p { font-size: 14px; margin: 12px 0 16px; max-width: none; }
+  .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+  .footer-col:last-child { grid-column: 1 / -1; }
   .footer-col h3 { font-size: 13px; margin-bottom: 10px; }
-  .footer-col a { font-size: 13.5px; padding: 5px 0; }
+  .footer-col a {
+    font-size: 14px;
+    padding: 8px 0;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
     padding-top: 20px;
   }
+  .footer-bottom > p:first-child { order: 1; }
+  .footer-legal { order: 2; width: 100%; gap: 8px 16px; }
+  .footer-social { order: 3; }
+  .footer-contact {
+    order: 4;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
   .footer-bottom p { font-size: 13px; }
-  .footer-legal { gap: 4px 14px; }
-  .footer-legal a { font-size: 12.5px; }
+  .footer-legal a { font-size: 13px; padding: 4px 0; }
   .footer-social { gap: 8px; }
-  .social-link { width: 36px; height: 36px; font-size: 13px; }
-  .footer-contact { font-size: 12.5px; }
-  .newsletter { flex-direction: column; max-width: none; gap: 8px; }
-  .newsletter input { border-radius: 14px; }
-  .newsletter .btn { width: 100%; border-radius: 14px; }
+  .social-link { width: 40px; height: 40px; font-size: 13px; }
+  .newsletter {
+    flex-direction: column;
+    max-width: none;
+    width: 100%;
+    gap: 10px;
+  }
+  .newsletter input {
+    width: 100%;
+    border-radius: 14px;
+    min-height: 48px;
+    font-size: 16px;
+  }
+  .newsletter .btn {
+    width: 100%;
+    border-radius: 14px;
+    min-height: 48px;
+    justify-content: center;
+  }
 
   /* ---- Floating buttons ---- */
   .fab { width: 52px; height: 52px; right: 14px; }
@@ -409,7 +454,10 @@
   .kpi { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .kpi strong { margin-top: 0; }
 
-  .footer-cols { grid-template-columns: 1fr; gap: 20px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 22px; }
+  .footer-col:last-child { grid-column: auto; }
+  .footer { padding: 40px 0 24px; }
+  .footer-contact { font-size: 12.5px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .stats-grid .stat-box:last-child { grid-column: 1 / -1; }
 
@@ -485,9 +533,18 @@
   /* ---- Stat boxes: subtle inner glow ---- */
   .stat-box { background: rgba(255, 255, 255, .06); }
 
-  /* ---- Footer: cleaner divider + centered brand ---- */
-  .footer-legal { width: 100%; }
-  .footer-bottom { border-top: 1px solid var(--line); }
+  /* ---- Footer: cleaner divider + readable legal row ---- */
+  .footer-legal {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+  .footer-bottom {
+    border-top: none;
+    width: 100%;
+  }
+  .footer-top { border-bottom-color: var(--line); }
 
   /* ---- Buttons: consistent comfy height everywhere ---- */
   .btn { min-height: 46px; }
