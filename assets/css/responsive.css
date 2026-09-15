@@ -10,11 +10,14 @@
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ---- Tablet (≤ 900px) ---- */
-@media (max-width: 900px) {
+/* ---- Nav collapse (≤ 1100px, wider than tablet breakpoint to fit all nav items) ---- */
+@media (max-width: 1100px) {
   .nav-links, .nav-actions { display: none; }
   .nav-toggle { display: flex; }
+}
 
+/* ---- Tablet (≤ 900px) ---- */
+@media (max-width: 900px) {
   :root { --section-y: 48px; --section-head-gap: 28px; }
 
   .hero { padding: 120px 0 var(--section-y); }
