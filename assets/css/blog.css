@@ -225,8 +225,9 @@
 }
 .post-content strong { color: var(--ink); font-weight: 600; }
 .post-content em { color: var(--ink); }
-.post-content a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
-.post-content a:hover { color: var(--blue-dark); }
+.post-content a:not(.btn) { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.post-content a:not(.btn):hover { color: var(--blue-dark); }
+.post-content a.btn { text-decoration: none; }
 .post-content blockquote {
   border-left: 3px solid var(--blue);
   background: var(--blue-soft);

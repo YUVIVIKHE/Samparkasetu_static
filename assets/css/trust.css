@@ -1,0 +1,177 @@
+/* =========================================================
+   Samparkasetu — Trust / Deliveries Page
+   ========================================================= */
+
+.trust-hero {
+  padding: 140px 0 64px;
+  background:
+    radial-gradient(900px 400px at 60% 0%, rgba(37,99,235,.08), transparent 60%),
+    linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.trust-hero .kicker { margin-bottom: 20px; }
+.trust-hero-title {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: clamp(30px, 4.6vw, 48px);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.trust-hero-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.trust-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 640px;
+  margin: 36px auto 0;
+}
+.ths-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px 16px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.ths-card strong {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+.ths-card span { font-size: 12.5px; color: var(--muted); }
+
+/* ---- Gallery ---- */
+.trust-gallery-section { padding: 64px 0 100px; }
+.trust-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.trust-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  cursor: zoom-in;
+}
+.trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.trust-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--grad-soft);
+}
+.trust-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s var(--ease);
+}
+.trust-card:hover .trust-card-img-wrap img { transform: scale(1.05); }
+.trust-card-body { padding: 16px 18px 18px; }
+.trust-card-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.trust-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.trust-card-badge svg { display: block; }
+
+/* ---- Lightbox ---- */
+.trust-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(15, 23, 42, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.trust-lightbox.open { opacity: 1; pointer-events: auto; }
+.trust-lightbox img {
+  max-width: 100%;
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.5);
+}
+.trust-lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.trust-lightbox-close:hover { background: rgba(255,255,255,.22); }
+.trust-lightbox-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  max-width: 90%;
+  opacity: .85;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .trust-hero { padding: 120px 0 48px; }
+  .trust-gallery-section { padding: 48px 0 80px; }
+}
+
+@media (max-width: 640px) {
+  .trust-hero { padding: 100px 0 36px; }
+  .trust-hero .container { padding-left: 16px; padding-right: 16px; }
+  .trust-hero-title { font-size: clamp(24px, 7vw, 32px); }
+  .trust-hero-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 28px; }
+  .ths-card { padding: 14px 8px; }
+  .ths-card strong { font-size: 19px; }
+  .trust-gallery { grid-template-columns: 1fr; gap: 18px; }
+  .trust-lightbox-close { top: 14px; right: 14px; width: 38px; height: 38px; }
+}
