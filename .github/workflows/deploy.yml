@@ -13,7 +13,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy Files
+      # Main domain (samparkasetu.com) is served from public_html/
+      # Do not use --delete: Hostinger may also host other folders (e.g. /app).
+      - name: Deploy to site root
+        uses: easingthemes/ssh-deploy@v5.1.0
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_PORT: ${{ secrets.PORT }}
+          SOURCE: "./"
+          TARGET: "/home/u652584741/domains/samparkasetu.com/public_html/"
+          ARGS: "-rlgoDzvc --exclude=.git --exclude=.github --exclude=README.md --exclude=app --exclude=vendor --exclude=storage --exclude=.env --exclude=website"
+
+      # Keep /website mirror in sync for old links
+      - name: Deploy to /website mirror
         uses: easingthemes/ssh-deploy@v5.1.0
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
