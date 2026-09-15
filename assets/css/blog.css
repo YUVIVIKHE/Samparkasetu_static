@@ -108,6 +108,19 @@
 .blog-card-link svg { transition: transform .2s var(--ease); }
 .blog-card:hover .blog-card-link svg { transform: translateX(3px); }
 
+/* ---- Home blog preview ---- */
+.home-blog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.home-blog-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+@media (max-width: 900px) {
+  .home-blog-grid { grid-template-columns: 1fr; }
+}
+
 /* ---- Post page ---- */
 .post-hero {
   padding: 140px 0 40px;
