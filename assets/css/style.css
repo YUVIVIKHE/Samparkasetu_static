@@ -279,22 +279,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 28px; }
 .logo-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-.logo-track { display: flex; gap: 56px; align-items: center; width: max-content; animation: marquee 28s linear infinite; }
+.logo-track { display: flex; gap: 72px; align-items: center; width: max-content; animation: marquee 20s linear infinite; }
 .logo-chip {
   display: inline-flex; align-items: center; justify-content: center;
   opacity: .9; padding: 0; border: 0 !important; border-radius: 0 !important;
   background: transparent !important; box-shadow: none !important;
   white-space: nowrap; transition: opacity .2s, transform .2s;
-  min-height: 0; min-width: 0; height: 56px;
+  min-height: 0; min-width: 0; height: 68px;
 }
 .logo-chip img {
-  display: block; height: 56px !important; max-height: 56px !important;
-  width: auto !important; max-width: 160px !important;
+  display: block; height: 68px !important; max-height: 68px !important;
+  width: auto !important; max-width: 190px !important;
   object-fit: contain; object-position: center;
 }
 .logo-chip--boost img {
-  height: 64px !important; max-height: 64px !important;
-  max-width: 180px !important;
+  height: 78px !important; max-height: 78px !important;
+  max-width: 210px !important;
 }
 .logo-chip:hover { opacity: 1; transform: translateY(-1px); }
 
